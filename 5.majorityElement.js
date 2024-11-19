@@ -19,28 +19,33 @@ n == nums.length
 -109 <= nums[i] <= 109
  
 
-Follow-up: Could you solve the problem in linear time and in O(1) space?
+
 */
 
-/**
- * @param {number[]} nums
- * @return {number}
- */
-var majorityElement = function(nums) {
-    //place a variable to store the majority element
-    var count = 0;
-    var majorNum = 0;
-    var len = nums.length;
-    for (var i = 0; i < len; i++) {
-        if (!count) {
-        majorNum = nums[i];
-        count = 1;
-        } else {
-        count += (nums[i] === majorNum ? 1 : -1);
+function majorityElement(numbers) {
+    // Initialize a count variable to keep track of the frequency of the majority element.
+    let count = 0;
+    // Initialize a variable to hold the current majority element.
+    let majorityElement = 0;
+    let i=0
+    // Iterate through each number in the numbers array.
+    for (const number of numbers) {
+        // If count is zero, we found a new possible majority element.
+        if (count === 0) {
+            majorityElement = number;
+            count = 1;
         }
-  }
-  return majorNum;
-};
+        // If the current number is the same as the majority element, increment the count.
+        // Otherwise, decrement the count.
+        else {
+            count += (majorityElement === number) ? 1 : -1;
+        }
+    }
+  
+    // At the end of the loop, the majorityElement variable will contain the majority element.
+    return majorityElement;
+}
+
 
 var majorityElementUsingMap = function(nums) {
    
@@ -60,7 +65,5 @@ var majorityElementUsingMap = function(nums) {
 };
 
 
-
-// console.log(majorityElement([3,2,3])) //3
-
-console.log(majorityElementUsingMap([3,2,3])) //3
+console.log(majorityElement([3,3,2,2,3,2,2,2])) //3
+// console.log(majorityElementUsingMap([3,2,3,3,3,3,3,2,2,2,1,1,1,10,1,1,1])) //3
