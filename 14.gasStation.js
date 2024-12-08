@@ -56,7 +56,7 @@ var canCompleteCircuit = function(gas, cost) {//ΣGas forever should be bigger t
   let startingPoint = 0; //which station to start
 
   for (let i=0; i < length; i++) { //travel all stations
-    freeGasAtStation += gas[i];
+      freeGasAtStation += gas[i];
       paid += cost[i];
       gasAvailable += gas[i] - cost[i];
       if (gasAvailable < 0) { //search for the first postive where cost[i] < gas[i], starting point.
