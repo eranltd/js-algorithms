@@ -106,13 +106,18 @@ Constraints:
 
 
 
+
+
+
 /**
+ * @param {number} num
+ * @return {string}
  * The main algorithm is using the division num by map[key] and modulus operator.
  * The division tells us how many particular symbols do we need to repeat.
  * And the modulus operator helps us to change the num.
-
- * const intToRoman = function (num) {
-  let result = '';
+    */
+var intToRoman = function(num) {
+    let result = '';
   const map = {
     M: 1000,
     CM: 900,
@@ -135,31 +140,6 @@ Constraints:
   }
 
   return result;
-};
- */
-
-
-
-/**
- * @param {number} num
- * @return {string}
- * Solution #3: Math
-    This incredibly concise solution comes from LeetCode, and uses just a little bit of math to get the job done.
-    The way it works is that it first initialises every combination of letters for each level of numeral (1, 10, 100, 1,000) in an array which starts with an empty value. Then, it calculates which array element to apply based on the modulo and / or division of the overall number by the relevant level (the exact path differs by level). The inclusion of the empty first element handles cases where the number is lower than that level (such as 500 being lower than the 1,000 level)
-    I’d say it’s a little less readable than the others, but it’s certainly elegant:
- */
-var intToRoman = function(num) {
-    const M = ['', 'M', 'MM', 'MMM'];
-    const C = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'];
-    const X = ['', 'X', 'XX', 'XXX', 'XL', 'L', 'LX', 'LXX', 'LXXX', 'XC'];
-    const I = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
-
-    return (
-        M[Math.floor(num / 1000)] +
-        C[Math.floor((num % 1000) / 100)] +
-        X[Math.floor((num % 100) / 10)] +
-        I[num % 10]
-    );
 };
 
 console.log(intToRoman(3749)); // "MMMDCCXLIX"
