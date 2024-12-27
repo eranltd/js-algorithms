@@ -83,25 +83,26 @@ Solution Analysis – Why this solution works?
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(height) {
-    let n = height.length;
-    let left = 0;
-    let right = n - 1;
-    let area = 0;
-    
-    while (left < right) {
-        
-        // Calculating the max area
-        const minimumHeight = Math.min(height[left], height[right]);
-        const newArea = minimumHeight * (right - left); //7,8 -> 7 * (8 - 1) = 7*7 = 49
-        area = Math.max(area, newArea);
-                            
-        if (height[left] < height[right])
-            left += 1;
-        else 
-            right -= 1;
+var maxArea = function(nums) {
+  var left = 0;
+  var right = nums.length - 1;
+  var area = 0;
+
+  
+//on our solution is enough to calculate the area of the water trapped between the two pointers, meaning the height of the bar (the lowest of 2 pointers) * distance between the two pointers
+
+  while (left < right) { //till 2 pointers meet
+  
+    area = Math.max(area, Math.min(nums[left],nums[right]) * (right - left)); //AREA = WIDTH * LENGTH (distance between 2 pointers)
+    if(nums[left] < nums[right]){
+        left++
     }
-    return area;
+    else{
+        right--
+    }
+  }
+
+  return area;
 };
 
 console.log(maxArea([1,8,6,2,5,4,8,3,7])) // 49
