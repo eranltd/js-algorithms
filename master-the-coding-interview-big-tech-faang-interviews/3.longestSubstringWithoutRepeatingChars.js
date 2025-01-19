@@ -33,11 +33,13 @@ s consists of English letters, digits, symbols and spaces.
  * @param {string} s
  * @return {number}
  */
+
 var lengthOfLongestSubstring = function(s) {
-    if(s.length <= 1) return s.length; 
+    if(s.length <= 1) return s.length; //constraint
     
     const seen = {};
-    let left = 0, longest = 0;
+    let left = 0
+    let longest = 0;
     
     for(let right = 0; right < s.length; right++) {
         const currentChar = s[right];
@@ -52,8 +54,10 @@ var lengthOfLongestSubstring = function(s) {
         longest = Math.max(longest, right - left + 1);
     }
     
-    return longest;    
-};
+    return longest;
+}
+
+
 
 console.log(lengthOfLongestSubstring("abcabcbb")) // 3
 console.log(lengthOfLongestSubstring("bbbbb")) // 1

@@ -34,7 +34,7 @@ s consists only of printable ASCII characters.
  * @return {boolean}
  */
 var isPalindrome = function(s) {
-    let newStr = s.toLowerCase().replace(/[^0-9a-z]/g, "");
+    let newStr = s.toLowerCase().replace(/[^0-9A-Za-z]/g, "");
     let left = 0, right = newStr.length-1;
     
     while(left < right){
@@ -46,5 +46,6 @@ var isPalindrome = function(s) {
 };
 
 console.log(isPalindrome("amanaplanacanalpanama"))    // true
+console.log(isPalindrome('A Man a Plan A canal    Panama'))//true
 console.log(isPalindrome("raceacar"))    // false
-console.log(isPalindrome())    // true
+console.log(isPalindrome(""))    // true

@@ -45,27 +45,49 @@ n == height.length
  * @param {number[]} heights
  * @return {number}
  */
+/*
+1. Identify the pointer with the lesser value
+2. Is this pointer value greater than or equal to max on that side
+  yes -> update max on that side
+  no -> get water for pointer, add to total
+3. move pointer inwards
+4. repeat for other pointer
+ */
+
 var trap = function(height) {
     var res = 0;
     var left = 0;
     var right = height.length - 1;
-    var leftMax = 0;
-    var rightMax = 0;
+    var leftMaxHeight = 0;
+    var rightMaxHeight = 0;
   
     while (left < right) {
-      if (height[left] < height[right]) {
-        if (height[left] >= leftMax) {
-          leftMax = height[left];
+      if (height[left] < height[right]) { //trapped water is determined by the shorter wall
+      
+      
+      
+        if (height[left] >= leftMaxHeight) {
+          leftMaxHeight = height[left]; //reset
         } else {
-          res += leftMax - height[left];
+          res += leftMaxHeight - height[left];
         }
+
+
+
         left++;
       } else {
-        if (height[right] >= rightMax) {
-          rightMax = height[right];
+       
+       
+       
+        if (height[right] >= rightMaxHeight) {
+          rightMaxHeight = height[right]; //reset
         } else {
-          res += rightMax - height[right];
+          res += rightMaxHeight - height[right];
         }
+
+
+
+
         right--;
       }
     }
