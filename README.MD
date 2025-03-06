@@ -73,7 +73,7 @@ The Fast and Slow pointer approach, also known as the Hare & Tortoise algorithm,
 
 By moving at different speeds (say, in a cyclic linked list), the algorithm proves that the two pointers are bound to meet. The fast pointer should catch the slow pointer once both the pointers are in a cyclic loop.
 
-![Fast and Slow Pointers](images/fast_slow_pointers.png)
+![Fast and Slow Pointers](images/fast_slow.png)
 
 ow do you identify when to use the Fast and Slow pattern?
 
