@@ -200,7 +200,7 @@ Add the second number (5) to all the existing subsets: [[], [1], [5], [1,5]];
 Add the third number (3) to all the existing subsets: [[], [1], [5], [1,5], [3], [1,3], [5,3], [1,5,3]].
 Here is a visual representation of the Subsets pattern:
 
-![Subsets](images/subsets.avif)
+![Subsets](images/subsets.png)
 
 How to identify the Subsets pattern:
 
@@ -223,7 +223,7 @@ Check if key < arr[middle]. If it is reduce your search to end = middle — 1
 Check if key > arr[middle]. If it is reduce your search to end = middle + 1
 Here is a visual representation of the Modified Binary Search pattern:
 
-![Modified Binary Search](images/modifed_binary_search.avif)
+![Modified Binary Search](images/modified_binary_search.png)
 
 Problems featuring the Modified Binary Search pattern:
 
@@ -238,7 +238,7 @@ The best data structure to keep track of ‘K’ elements is Heap. This pattern 
 Insert ‘K’ elements into the min-heap or max-heap based on the problem.
 Iterate through the remaining numbers and if you find one that is larger than what you have in the heap, then remove that number and insert the larger one.
 
-![Top K Elements](images/top_k_elements.avif)
+![Top K Elements](images/top_k_elements.png)
 
 There is no need for a sorting algorithm because the heap will keep track of the elements for you.
 
@@ -257,7 +257,7 @@ K-way Merge helps you solve problems that involve a set of sorted arrays.
 
 Whenever you’re given ‘K’ sorted arrays, you can use a Heap to efficiently perform a sorted traversal of all the elements of all arrays. You can push the smallest element of each array in a Min Heap to get the overall minimum. After getting the overall minimum, push the next element from the same array to the heap. Then, repeat this process to make a sorted traversal of all elements.
 
-![K-way Merge](images/k_way_merge.avif)
+![K-way Merge](images/k_way_merge.png)
 
 The pattern looks like this:
 
@@ -318,7 +318,7 @@ a) For each source, do the following things:
 — iv)If a child’s in-degree becomes ‘0’, add it to the sources Queue.
 b) Repeat (a), until the source Queue is empty.
 
-![Topological Sort](images/topological_sort.avif)
+![Topological Sort](images/topological_sort.png)
 
 How to identify the Topological Sort pattern:
 
