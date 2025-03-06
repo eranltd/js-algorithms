@@ -65,42 +65,28 @@ class TreeNode {
     if(!root) return [];
     const result = [];
     const queue = [root];
-    
-    while(queue.length) { //normal BFS
-      const element = queue.shift();
-      result.push(element.value)
 
-      if(element.left) {
-        queue.push(element.left)
-      }
-      if(element.right) {
-        queue.push(element.right)
-      }
+    //traversal nodes looper
+    while(){
+      const currentNodesArray = []
+
+      //level node looper
+      while()
+
+
+
+
+
+
+
+      result.push(currentNodesArray)
     }
+
+
     
-    return result;
 
   }
   console.log(levelOrder(tree))
 
 
-  const currentLevelValues = [];
-      // let count = 0;
   
-      // while(count < queue.length) {
-      //   const currentNode = queue.shift();
-        
-      //   currentLevelValues.push(currentNode.value);
-        
-      //   if(currentNode.left) {
-      //     queue.push(currentNode.left)
-      //   }
-        
-      //   if(currentNode.right) {
-      //     queue.push(currentNode.right)
-      //   }
-  
-      //   count++;
-      // }
-      
-      // result.push(currentLevelValues);

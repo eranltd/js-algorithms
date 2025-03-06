@@ -37,8 +37,7 @@ Each problem in this repository includes:
 
 The Sliding Window pattern is used to perform a required operation on a specific window size of a given array or linked list, such as finding the longest subarray containing all 1s. Sliding Windows start from the 1st element and keep shifting right by one element and adjust the length of the window according to the problem that you are solving. In some cases, the window size remains constant and in other cases the sizes grows or shrinks.
 
-//TODO: add image here
-
+![Sliding Window](images/sliding_window.png)
 
 Following are some ways you can identify that the given problem might require a sliding window:
 
@@ -56,7 +55,7 @@ Two Pointers is a pattern where two pointers iterate through the data structure 
 
 Two pointers are needed because with just pointer, you would have to continually loop back through the array to find the answer. This back and forth with a single iterator is inefficient for time and space complexity — a concept referred to as asymptotic analysis. While the brute force or naive solution with 1 pointer would work, it will produce something along the lines of O(n²). In many cases, two pointers can help you find a solution with better space or runtime complexity.
 
-//TODO: put image here
+![Two Pointers or Iterators](images/two_pointers.png)
 
 Ways to identify when to use the Two Pointer method:
 
@@ -74,7 +73,7 @@ The Fast and Slow pointer approach, also known as the Hare & Tortoise algorithm,
 
 By moving at different speeds (say, in a cyclic linked list), the algorithm proves that the two pointers are bound to meet. The fast pointer should catch the slow pointer once both the pointers are in a cyclic loop.
 
-//TODO: put image here
+![Fast and Slow Pointers](images/fast_slow_pointers.png)
 
 ow do you identify when to use the Fast and Slow pattern?
 
@@ -95,7 +94,7 @@ The Merge Intervals pattern is an efficient technique to deal with overlapping i
 
 Given two intervals (‘a’ and ‘b’), there will be six different ways the two intervals can relate to each other:
 
-//TODO: put image here
+![Merge Intervals](images/merge_intervals.png)
 
 Understanding and recognizing these six cases will help you help you solve a wide range of problems from inserting intervals to optimizing interval merges.
 
@@ -112,7 +111,7 @@ Maximum CPU Load (hard)
 
 This pattern describes an interesting approach to deal with problems involving arrays containing numbers in a given range. The Cyclic Sort pattern iterates over the array one number at a time, and if the current number you are iterating is not at the correct index, you swap it with the number at its correct index. You could try placing the number in its correct index, but this will produce a complexity of O(n^2) which is not optimal, hence the Cyclic Sort pattern.
 
-//TODO: put image here
+![Cyclic Sort](images/cyclic_sort.png)
 
 How do I identify this pattern?
 
@@ -129,7 +128,7 @@ In a lot of problems, you may be asked to reverse the links between a set of nod
 
 This pattern reverses one node at a time starting with one variable (current) pointing to the head of the linked list, and one variable (previous) will point to the previous node that you have processed. In a lock-step manner, you will reverse the current node by pointing it to the previous before moving on to the next node. Also, you will update the variable “previous” to always point to the previous node that you have processed.
 
-//TODO: put image here
+![In-place Reversal of a LinkedList](images/in_place_reversal_of_linkedlist.png)
 
 How do I identify when to use this pattern:
 
@@ -201,7 +200,7 @@ Add the second number (5) to all the existing subsets: [[], [1], [5], [1,5]];
 Add the third number (3) to all the existing subsets: [[], [1], [5], [1,5], [3], [1,3], [5,3], [1,5,3]].
 Here is a visual representation of the Subsets pattern:
 
-//TODO: put image here
+![Subsets](images/subsets.avif)
 
 How to identify the Subsets pattern:
 
@@ -224,7 +223,7 @@ Check if key < arr[middle]. If it is reduce your search to end = middle — 1
 Check if key > arr[middle]. If it is reduce your search to end = middle + 1
 Here is a visual representation of the Modified Binary Search pattern:
 
-//TODO: put image here
+![Modified Binary Search](images/modifed_binary_search.avif)
 
 Problems featuring the Modified Binary Search pattern:
 
@@ -239,7 +238,7 @@ The best data structure to keep track of ‘K’ elements is Heap. This pattern 
 Insert ‘K’ elements into the min-heap or max-heap based on the problem.
 Iterate through the remaining numbers and if you find one that is larger than what you have in the heap, then remove that number and insert the larger one.
 
-//TODO: put image here
+![Top K Elements](images/top_k_elements.avif)
 
 There is no need for a sorting algorithm because the heap will keep track of the elements for you.
 
@@ -258,8 +257,7 @@ K-way Merge helps you solve problems that involve a set of sorted arrays.
 
 Whenever you’re given ‘K’ sorted arrays, you can use a Heap to efficiently perform a sorted traversal of all the elements of all arrays. You can push the smallest element of each array in a Min Heap to get the overall minimum. After getting the overall minimum, push the next element from the same array to the heap. Then, repeat this process to make a sorted traversal of all elements.
 
-//TODO: put image here
-
+![K-way Merge](images/k_way_merge.avif)
 
 The pattern looks like this:
 
@@ -320,7 +318,7 @@ a) For each source, do the following things:
 — iv)If a child’s in-degree becomes ‘0’, add it to the sources Queue.
 b) Repeat (a), until the source Queue is empty.
 
-//TODO: put image here
+![Topological Sort](images/topological_sort.avif)
 
 How to identify the Topological Sort pattern:
 
