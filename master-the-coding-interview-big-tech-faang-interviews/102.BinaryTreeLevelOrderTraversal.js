@@ -23,70 +23,80 @@ The number of nodes in the tree is in the range [0, 2000].
 -1000 <= Node.val <= 1000
 */
 
-
 /*
 NOTE: The beginning portion builds our test case binary tree. Scroll down to the section titled Our Solution for the code solution!
  */
 
 // ------- Code to generate our binary tree -------
 class TreeNode {
-    constructor(value) {
-      this.value = value;
-      this.left = null;
-      this.right = null;
-    }
-  
-    insert(values) {
-      const queue = [this];
-      let i = 0;
-      while (queue.length > 0) {
-        let current = queue.shift();
-        for (let side of ["left", "right"]) {
-          if (!current[side]) {
-            if (values[i] !== null) {
-              current[side] = new TreeNode(values[i]);
-            }
-            i++;
-            if (i >= values.length) return this;
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  insert(values) {
+    const queue = [this];
+    let i = 0;
+    while (queue.length > 0) {
+      let current = queue.shift();
+      for (let side of ["left", "right"]) {
+        if (!current[side]) {
+          if (values[i] !== null) {
+            current[side] = new TreeNode(values[i]);
           }
-          if (current[side]) queue.push(current[side]);
+          i++;
+          if (i >= values.length) return this;
         }
+        if (current[side]) queue.push(current[side]);
       }
-      return this;
     }
+    return this;
   }
-  
-  const tree = new TreeNode(3);
-  tree.insert([6,1,9,2,null,4,null,5,null,null,null,null,8,null,null,null]);
-  // ------- Code to generate our binary tree -------
+}
 
+const tree = new TreeNode(3);
+tree.insert([
+  6,
+  1,
+  9,
+  2,
+  null,
+  4,
+  null,
+  5,
+  null,
+  null,
+  null,
+  null,
+  8,
+  null,
+  null,
+  null,
+]);
+// ------- Code to generate our binary tree -------
 
-  const levelOrder = function(root) {
-    if(!root) return [];
-    const result = [];
-    const queue = [root];
+const levelOrder = function (root) {
+  if (!root) return [];
+  const result = [];
+  const queue = [root];
 
-    //traversal nodes looper
-    while(){
-      const currentNodesArray = []
+  while (queue.length) {
+    const currentNodesArray = [];
+    let count = 0;
 
-      //level node looper
-      while()
+    while (count < queue.length) {
+      const currentNode = queue.shift();
+      currentNodesArray.push(currentNode.value)
 
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
 
-
-
-
-
-
-      result.push(currentNodesArray)
+      count++;
     }
-
-
-    
-
+    result.push(currentNodesArray);
   }
-  console.log(levelOrder(tree))
+  return result
+};
 
-
-  
+console.log(levelOrder(tree));
