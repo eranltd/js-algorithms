@@ -128,7 +128,7 @@ In a lot of problems, you may be asked to reverse the links between a set of nod
 
 This pattern reverses one node at a time starting with one variable (current) pointing to the head of the linked list, and one variable (previous) will point to the previous node that you have processed. In a lock-step manner, you will reverse the current node by pointing it to the previous before moving on to the next node. Also, you will update the variable “previous” to always point to the previous node that you have processed.
 
-![In-place Reversal of a LinkedList](images/in_place_reversal_of_linkedlist.png)
+![In-place Reversal of a LinkedList](images/in_place_reversal_linked_list.png)
 
 How do I identify when to use this pattern:
 
@@ -142,7 +142,9 @@ Reverse every K-element Sub-list (medium)
 
 This pattern is based on the Breadth First Search (BFS) technique to traverse a tree and uses a queue to keep track of all the nodes of a level before jumping onto the next level. Any problem involving the traversal of a tree in a level-by-level order can be efficiently solved using this approach.
 
-The Tree BFS pattern works by pushing the root node to the queue and then continually iterating until the queue is empty. For each iteration, we remove the node at the head of the queue and “visit” that node. After removing each node from the queue, we also insert all of its children into the queue.
+The Tree BFS pattern works by pushing the root node to the queue and then continually iterating until the queue is empty. For each iteration, we remove the node at the head of the queue and "visit" that node. After removing each node from the queue, we also insert all of its children into the queue.
+
+![BFS](images/dfs.png)
 
 How to identify the Tree BFS pattern:
 
@@ -166,6 +168,9 @@ How to identify the Tree DFS pattern:
 
 If you’re asked to traverse a tree with in-order, preorder, or postorder DFS
 If the problem requires searching for something where the node is closer to a leaf
+
+![DFS](images/dfs.png)
+
 Problems featuring Tree DFS pattern:
 
 Sum of Path Numbers (medium)
@@ -176,6 +181,9 @@ All Paths for a Sum (medium)
 In many problems, we are given a set of elements such that we can divide them into two parts. To solve the problem, we are interested in knowing the smallest element in one part and the biggest element in the other part. This pattern is an efficient approach to solve such problems.
 
 This pattern uses two heaps; A Min Heap to find the smallest element and a Max Heap to find the biggest element. The pattern works by storing the first half of numbers in a Max Heap, this is because you want to find the largest number in the first half. You then store the second half of numbers in a Min Heap, as you want to find the smallest number in the second half. At any time, the median of the current list of numbers can be calculated from the top element of the two heaps.
+
+![Two Heaps](images/two_heaps.png)
+
 
 Ways to identify the Two Heaps pattern:
 
@@ -289,7 +297,7 @@ If the weight of the item is less than the capacity, take the maximum of the pre
 If the weight of the item is greater than the capacity, take the previous profit
 Here is a visual representation of the 0/1 Knapsack pattern:
 
-//TODO: put image here
+![0/1 Knapsack](images/knapsack.png)
 
 How to identify the 0/1 Knapsack pattern:
 
