@@ -16,8 +16,8 @@ function mergeIntervals(intervals) {
 
 
     for(let i = 1; i< intervals.length ; i++) { //iterating from the 2nd
-        if(intervals[i][0] <= merged[merged.length-1][1]){
-            merged[merged.length-1][1] = Math.max(intervals[i][1], merged[merged.length-1][1])
+        if(intervals[i][0] <= merged[merged.length-1][1]){ //compare with previous
+            merged[merged.length-1][1] = Math.max(intervals[i][1], merged[merged.length-1][1]) //update the last one (merge intervals)
         }
         else{
             merged.push(intervals[i])
