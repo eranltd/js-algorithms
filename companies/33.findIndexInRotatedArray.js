@@ -94,26 +94,34 @@ console.log(search([1], 0)); // Output: -1
 
 
 /*
-This implementation differs from a regular binary search because it is designed to handle rotated sorted arrays, which are arrays that were originally sorted but then rotated at some pivot point. For example, [4, 5, 6, 7, 0, 1, 2] is a rotated version of [0, 1, 2, 4, 5, 6, 7].
+This implementation differs from a regular binary search because it is designed to handle rotated sorted arrays,
+which are arrays that were originally sorted but then rotated at some pivot point.
+
+For example, [4, 5, 6, 7, 0, 1, 2] is a rotated version of [0, 1, 2, 4, 5, 6, 7].
 
 Key Differences:
+
 Rotated Array Structure:
 
 In a regular binary search, the array is fully sorted, so you can directly compare the middle element (nums[mid]) with the target to decide whether to search the left or right half.
 In a rotated array, the sorted order is "broken" at the pivot point. This means that one half of the array (either left or right) is still sorted, while the other half may contain the rotation. You need to account for this when deciding which half to search.
+
 Additional Checks:
 
 The code includes extra checks to determine whether the target lies in the sorted half of the array. Specifically:
 If nums[low] <= nums[mid], the left half is sorted. The target is checked to see if it lies within this range (nums[low] <= target < nums[mid]).
 Otherwise, the right half is sorted, and the target is checked against that range (nums[mid] < target <= nums[high]).
+
 Handling the Rotation:
 
 The rotation introduces a discontinuity in the array, so the algorithm must first identify which half is sorted before deciding where to search. This is why the conditions nums[low] <= nums[mid] and nums[mid] < nums[high] are used.
+
 Why This Works:
 The rotated array still retains some properties of a sorted array:
 
 At least one half (left or right) of the array is always sorted.
 By identifying the sorted half, the algorithm can narrow down the search space effectively, just like in a regular binary search.
+
 Example Walkthrough:
 Consider the array [4, 5, 6, 7, 0, 1, 2] and target 0:
 
