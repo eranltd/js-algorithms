@@ -16,8 +16,6 @@ If the value starts with 4 or 9 use the subtractive form representing one symbol
 Only powers of 10 (I, X, C, M) can be appended consecutively at most 3 times to represent multiples of 10. You cannot append 5 (V), 50 (L), or 500 (D) multiple times. If you need to append a symbol 4 times use the subtractive form.
 Given an integer, convert it to a Roman numeral.
 
- 
-
 Example 1:
 
 Input: num = 3749
@@ -53,19 +51,17 @@ Explanation:
  900 = CM
   90 = XC
    4 = IV
- 
 
 Constraints:
 
 1 <= num <= 3999
 */
 
-
 /**
  * Another solution
  *     # Result string
     result = ''
-    
+
     # Iterate over the mapping in descending order
     for integer, roman in mapping.items():
         # Check if the current integer value is less than or equal to the given number
@@ -73,21 +69,21 @@ Constraints:
             # Add the corresponding roman numeral to the result string and subtract the integer value from the given number
             result += roman
             num -= integer
-            
+
     # Return the result string
     return result
-    
+
  * var intToRoman = function(num) {
-    
+
     // create an empty string to store the roman numeral
     var roman = "";
-    
+
     // create an array of all the decimal values that correspond to a roman numeral
     var decimalValue = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
-    
+
     // create an array of all the roman numerals
     var romanNumeral = [ "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" ];
-    
+
     // loop through the decimal values array
     for (var index = 0; index < decimalValue.length; index++) {
         // while the decimal value at the current index is less than or equal to the number passed into the function
@@ -98,16 +94,11 @@ Constraints:
             num -= decimalValue[index];
         }
     }
-    
+
     // return the completed roman numeral string
     return roman;
 };
  */
-
-
-
-
-
 
 /**
  * @param {number} num
@@ -116,8 +107,8 @@ Constraints:
  * The division tells us how many particular symbols do we need to repeat.
  * And the modulus operator helps us to change the num.
     */
-var intToRoman = function(num) {
-    let result = '';
+const intToRoman = function (num) {
+  let result = ''
   const map = {
     M: 1000,
     CM: 900,
@@ -131,17 +122,17 @@ var intToRoman = function(num) {
     IX: 9,
     V: 5,
     IV: 4,
-    I: 1,
-  };
-
-  for (key in map) {
-    result += key.repeat(Math.floor(num / map[key]));
-    num %= map[key];
+    I: 1
   }
 
-  return result;
-};
+  for (key in map) {
+    result += key.repeat(Math.floor(num / map[key]))
+    num %= map[key]
+  }
 
-console.log(intToRoman(3749)); // "MMMDCCXLIX"
-console.log(intToRoman(58)); // "LVIII"
-console.log(intToRoman(1994)); // "MCMXCIV"
+  return result
+}
+
+console.log(intToRoman(3749)) // "MMMDCCXLIX"
+console.log(intToRoman(58)) // "LVIII"
+console.log(intToRoman(1994)) // "MCMXCIV"

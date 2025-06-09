@@ -7,7 +7,6 @@ if you are at nums[i], you can jump to any nums[i + j] where:
 i + j < n
 Return the minimum number of jumps to reach nums[n - 1]. The test cases are generated such that you can reach nums[n - 1].
 
-
 Example 1:
 
 Input: nums = [2,3,1,1,4]
@@ -17,7 +16,6 @@ Example 2:
 
 Input: nums = [2,3,0,1,4]
 Output: 2
- 
 
 Constraints:
 
@@ -30,25 +28,24 @@ It's guaranteed that you can reach nums[n - 1].
  * @param {number[]} nums
  * @return {boolean}
  */
-var canJump = function(nums) {
-    var len = nums.length;
-    var step = 0;
-    var now = 0;
-    var max = 0;
-  
-    for (var i = 0; i < len - 1; i++) {
-      max = Math.max(max, i + nums[i]);
-      if (i === now) {
-        step++;
-        now = max;
-      }
+const canJump = function (nums) {
+  const len = nums.length
+  let step = 0
+  let now = 0
+  let max = 0
+
+  for (let i = 0; i < len - 1; i++) {
+    max = Math.max(max, i + nums[i])
+    if (i === now) {
+      step++
+      now = max
     }
-  
-    return step;
-};
+  }
 
+  return step
+}
 
-console.log(canJump([2,3,1,1,4])); // 2
-console.log(canJump([2,3,0,1,4])); // 2
-console.log(canJump([1])); // 0
-console.log(canJump([2,0,0])); // 1
+console.log(canJump([2, 3, 1, 1, 4])) // 2
+console.log(canJump([2, 3, 0, 1, 4])) // 2
+console.log(canJump([1])) // 0
+console.log(canJump([2, 0, 0])) // 1

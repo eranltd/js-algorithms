@@ -20,8 +20,6 @@ for (int i = 0; i < k; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
- 
-
 Example 1:
 
 Input: nums = [1,1,2]
@@ -34,7 +32,6 @@ Input: nums = [0,0,1,1,1,2,2,3,3,4]
 Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
- 
 
 Constraints:
 
@@ -47,32 +44,31 @@ nums is sorted in non-decreasing order.
  * @param {number[]} nums
  * @return {number}
  */
-var removeDuplicates = function(nums) { //[1,1,2]
-    let k = 0; //count the unique numbers in the array
-    let n = nums.length
-    let last = NaN
-    for(let i=0; i < n; i++){
-        if(nums[i] != last){
-            nums[k] = nums[i] //change the original array
-            last = nums[i]
-            k++
-        }
+const removeDuplicates = function (nums) { // [1,1,2]
+  let k = 0 // count the unique numbers in the array
+  const n = nums.length
+  let last = NaN
+  for (let i = 0; i < n; i++) {
+    if (nums[i] != last) {
+      nums[k] = nums[i] // change the original array
+      last = nums[i]
+      k++
     }
+  }
 
-    return k;
-};
+  return k
+}
 
-
-console.log(removeDuplicates([0,0,1,1,1,2,2,3,3,4])) //5
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])) // 5
 
 // console.log(removeDuplicates([1,1,2])) //2
-console.log(removeDuplicates([1,2,3,4])) //4
+console.log(removeDuplicates([1, 2, 3, 4])) // 4
 // console.log(removeDuplicates([1,1,1,1])) //1
 // console.log(removeDuplicates([1,1,1,1,2,2,2,2])) //2
-console.log(removeDuplicates([1,2,3,4,5,6,7,8,9,10])) //10
-console.log(removeDuplicates([1,1,1,1,1,1,1,1,1,1])) //1
+console.log(removeDuplicates([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])) // 10
+console.log(removeDuplicates([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) // 1
 
-//change the original array
+// change the original array
 
 // let sameArray = [0,0,1,1,1,2,2,3,3,4] //k should be 5, nums = [0,1,2,3,4,_,_,_,_,_]
 // console.log(removeDuplicates(sameArray)) //5

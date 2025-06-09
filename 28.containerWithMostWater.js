@@ -5,34 +5,33 @@
      Return the maximum amount of water a container can store.
 
     Notice that you may not slant the container.
- 
 
 Example 1:
              :::::::::::: = water
-   .                                                                                                   
-    .                                                                                                   
-                              
-  8               ##*                                                   *@#                             
-    .             ##*                                                   *@#                             
-  7...            ##*:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-                  ###:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-  . .             *##:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-  :..             *##:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-  6               *##:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-  -..             ###:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*        
-  5 .             ###:::::::::+@@-:::::::::::::::::*@@-:::::::::::::::::#@%::::::::::::::::::##*        
-                  ###:::::::::+@@-:::::::::::::::::*@@-:::::::::::::::::#@%::::::::::::::::::##*        
-  4..             ###:::::::::+@@-:::::::::::::::::*@@-::::::-%%=:::::::#@%::::::::::::::::::##*        
-    .             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%::::::::::::::::::##*        
-                  ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%::::::::::::::::::##*        
-  3:.             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-    .             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-  :..             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-  2..             ###:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-                  *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-  : .:   :--      *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-  1 .    =@@.     *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
-    .    =@@.     ###:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*        
+   .
+    .
+
+  8               ##*                                                   *@#
+    .             ##*                                                   *@#
+  7...            ##*:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+                  ###:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+  . .             *##:::::::::::::::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+  :..             *##:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+  6               *##:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+  -..             ###:::::::::+@@-::::::::::::::::::::::::::::::::::::::#@%::::::::::::::::::##*
+  5 .             ###:::::::::+@@-:::::::::::::::::*@@-:::::::::::::::::#@%::::::::::::::::::##*
+                  ###:::::::::+@@-:::::::::::::::::*@@-:::::::::::::::::#@%::::::::::::::::::##*
+  4..             ###:::::::::+@@-:::::::::::::::::*@@-::::::-%%=:::::::#@%::::::::::::::::::##*
+    .             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%::::::::::::::::::##*
+                  ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%::::::::::::::::::##*
+  3:.             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+    .             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+  :..             ###:::::::::+@@-:::::::::::::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+  2..             ###:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+                  *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+  : .:   :--      *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+  1 .    =@@.     *##:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
+    .    =@@.     ###:::::::::+@@-:::::::@@*:::::::*@@-::::::-@@+:::::::#@%:::::::-@@=:::::::##*
   0  .....::......::::........::::::::::::::..:.::::::::::::.::-:::::::::::...:.:.::::.:::::::::........
 
 Input: height = [1,8,6,2,5,4,8,3,7]
@@ -42,7 +41,6 @@ Example 2:
 
 Input: height = [1,1]
 Output: 1
- 
 
 Constraints:
 
@@ -52,24 +50,24 @@ n == height.length
 */
 
 /*
-Algorithm: 
+Algorithm:
     Keep two index, first = 0 and last = n-1 and a value max_area that stores the maximum area.
     Run a loop until first is less than the last.
     Update the max_area with maximum of max_area and min(array[first] , array[last])*(last-first)
     if the value at array[first] is greater the array[last] then update last as last – 1 else update first as first + 1
     Print the maximum area.
 
-Complexity Analysis: 
+Complexity Analysis:
 
-    Time Complexity: O(n). 
+    Time Complexity: O(n).
     As only one traversal of the array is required, so time complexity is O(n).
-    Space Complexity: O(1). 
+    Space Complexity: O(1).
     No extra space is required, so space complexity is constant.
 
 Solution Analysis – Why this solution works?
 
     Every time, we are moving our pointer i ahead if height of line at ith index is smaller or j pointer if height of line at jth index is smaller. This means whichever line is smaller, we won’t consider it again, because, this line could be the answer only if the other line is larger than it and at maximum width and to be noticed that this is the time when other line is larger as well as max distance apart. So, not considering it makes sense.
-    In other words, we are required to pair up every line with that line which is greater than it and at maximum distance apart i.e. 
+    In other words, we are required to pair up every line with that line which is greater than it and at maximum distance apart i.e.
 
     For example -> 8 5 9 1 10 2 6
 
@@ -83,29 +81,26 @@ Solution Analysis – Why this solution works?
  * @param {number[]} height
  * @return {number}
  */
-var maxArea = function(nums) {
-  var left = 0;
-  var right = nums.length - 1;
-  var area = 0;
+const maxArea = function (nums) {
+  let left = 0
+  let right = nums.length - 1
+  let area = 0
 
-  
-//on our solution is enough to calculate the area of the water trapped between the two pointers, meaning the height of the bar (the lowest of 2 pointers) * distance between the two pointers
+  // on our solution is enough to calculate the area of the water trapped between the two pointers, meaning the height of the bar (the lowest of 2 pointers) * distance between the two pointers
 
-  while (left < right) { //till 2 pointers meet
-  
-    area = Math.max(area, Math.min(nums[left],nums[right]) * (right - left)); //AREA = WIDTH * LENGTH (distance between 2 pointers)
-    if(nums[left] < nums[right]){
-        left++
-    }
-    else{
-        right--
+  while (left < right) { // till 2 pointers meet
+    area = Math.max(area, Math.min(nums[left], nums[right]) * (right - left)) // AREA = WIDTH * LENGTH (distance between 2 pointers)
+    if (nums[left] < nums[right]) {
+      left++
+    } else {
+      right--
     }
   }
 
-  return area;
-};
+  return area
+}
 
-console.log(maxArea([1,8,6,2,5,4,8,3,7])) // 49
-console.log(maxArea([1,1])) // 1
-console.log(maxArea([4,3,2,1,4])) // 16
-console.log(maxArea([1,2,1])) // 2
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
+console.log(maxArea([1, 1])) // 1
+console.log(maxArea([4, 3, 2, 1, 4])) // 16
+console.log(maxArea([1, 2, 1])) // 2

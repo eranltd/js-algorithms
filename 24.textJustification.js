@@ -12,7 +12,6 @@ Note:
 A word is defined as a character sequence consisting of non-space characters only.
 Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
 The input array words contains at least one word.
- 
 
 Example 1:
 
@@ -46,7 +45,6 @@ Output:
   "everything  else  we",
   "do                  "
 ]
- 
 
 Constraints:
 
@@ -62,54 +60,54 @@ words[i].length <= maxWidth
  * @param {number} maxWidth
  * @return {string[]}
  */
-var fullJustify = function(words, maxWidth) {
-    var len = words.length;
-    var arr = [];
-    var width = 0;
-    var item = null;
-    var addLen = 0;
-    var res = [];
-  
-    for (var i = 0; i < len; i++) {
-      item = words[i];
-      addLen = width === 0 ? item.length : (item.length + 1);
-      
-      if (width + addLen > maxWidth) {
-        res.push(helper(arr, maxWidth - width, false));
-        arr = [];
-        width = 0;
-        addLen = item.length;
-      }
-      
-      arr.push(item);
-      width += addLen;
-    }
-  
-    res.push(helper(arr, maxWidth - width, true));
-  
-    return res;
-  };
-  
-  var helper = function (arr, left, isLast) {
-    var len = arr.length;
-    var num = 0;
-    var rem = 0;
-    var res = '';
-  
-    if (len === 1 || isLast) {
-      return arr.join(' ') + ' '.repeat(left);
-    }
-  
-    num = Math.floor(left / (len - 1));
-    rem = left % (len - 1);
-    for (var i = 0; i < len; i++) {
-      res += arr[i];
-      if (i < len - 1) res += ' '.repeat(num + 1);
-      if (i < rem) res += ' ';
-    }
-  
-    return res;
-};
+const fullJustify = function (words, maxWidth) {
+  const len = words.length
+  let arr = []
+  let width = 0
+  let item = null
+  let addLen = 0
+  const res = []
 
-console.log(fullJustify(["This", "is", "an", "example", "of", "text", "justification."], 16)) // ["This    is    an", "example  of text", "justification.  "]
-console.log(fullJustify(["What","must","be","acknowledgment","shall","be"], 16)) // ["What   must   be", "acknowledgment  ", "shall be        "]
+  for (let i = 0; i < len; i++) {
+    item = words[i]
+    addLen = width === 0 ? item.length : (item.length + 1)
+
+    if (width + addLen > maxWidth) {
+      res.push(helper(arr, maxWidth - width, false))
+      arr = []
+      width = 0
+      addLen = item.length
+    }
+
+    arr.push(item)
+    width += addLen
+  }
+
+  res.push(helper(arr, maxWidth - width, true))
+
+  return res
+}
+
+var helper = function (arr, left, isLast) {
+  const len = arr.length
+  let num = 0
+  let rem = 0
+  let res = ''
+
+  if (len === 1 || isLast) {
+    return arr.join(' ') + ' '.repeat(left)
+  }
+
+  num = Math.floor(left / (len - 1))
+  rem = left % (len - 1)
+  for (let i = 0; i < len; i++) {
+    res += arr[i]
+    if (i < len - 1) res += ' '.repeat(num + 1)
+    if (i < rem) res += ' '
+  }
+
+  return res
+}
+
+console.log(fullJustify(['This', 'is', 'an', 'example', 'of', 'text', 'justification.'], 16)) // ["This    is    an", "example  of text", "justification.  "]
+console.log(fullJustify(['What', 'must', 'be', 'acknowledgment', 'shall', 'be'], 16)) // ["What   must   be", "acknowledgment  ", "shall be        "]

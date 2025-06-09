@@ -1,10 +1,8 @@
 // Given a string s consisting of words and spaces, return the length of the last word in the string.
 
-// A word is a maximal 
+// A word is a maximal
 // substring
 //  consisting of non-space characters only.
-
- 
 
 // Example 1:
 
@@ -21,7 +19,6 @@
 // Input: s = "luffy is still joyboy"
 // Output: 6
 // Explanation: The last word is "joyboy" with length 6.
- 
 
 // Constraints:
 
@@ -33,16 +30,16 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLastWord = function(s) {
-    let len = 0;
-    for (let i = s.length - 1; i >= 0; i--) {
-        if (s[i] !== ' ') len++;
-        else if (len !== 0) break;
-    }
-    return len;
-};
+const lengthOfLastWord = function (s) {
+  let len = 0
+  for (let i = s.length - 1; i >= 0; i--) {
+    if (s[i] !== ' ') len++
+    else if (len !== 0) break
+  }
+  return len
+}
 
-console.log(lengthOfLastWord("Hello World")) // 5
-console.log(lengthOfLastWord("   fly me   to   the moon  ")) // 4
-console.log(lengthOfLastWord("luffy is still joyboy")) // 6
-console.log(lengthOfLastWord("a")) // 1
+console.log(lengthOfLastWord('Hello World')) // 5
+console.log(lengthOfLastWord('   fly me   to   the moon  ')) // 4
+console.log(lengthOfLastWord('luffy is still joyboy')) // 6
+console.log(lengthOfLastWord('a')) // 1

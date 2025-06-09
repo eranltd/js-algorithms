@@ -3,8 +3,6 @@ Given two strings s and t, return true if they are equal when both are typed int
 
 Note that after backspacing an empty text, the text will continue empty.
 
- 
-
 Example 1:
 
 Input: s = "ab#c", t = "ad#c"
@@ -20,7 +18,6 @@ Example 3:
 Input: s = "a#c", t = "b"
 Output: false
 Explanation: s becomes "c" while t becomes "b".
- 
 
 Constraints:
 
@@ -28,46 +25,37 @@ Constraints:
 s and t only contain lowercase letters and '#' characters.
 */
 
-
-
-
 /**
  * @param {string} s
  * @param {string} t
  * @return {boolean}
  */
-var backspaceCompare = function(s, t) {
-    const buildString = (str) => {
-        const result = []
-        for(let i=0; i< str.length;i++){
-            if(str[i] != '#')
-                result.push(str[i])
-            else
-                result.pop()
-        }
-    
-        return result
-    }
-    //if # occurs, ignore previous char (mark as backspace)
-    const leftArr = buildString(s)
-    const rightArr = buildString(t)
-    
-    if(leftArr.length != rightArr.length){
-        return false
-    }
-    else {
-        for(let i=0; i< leftArr.length;i++)
-            if(leftArr[i]!= rightArr[i])
-                return false
+const backspaceCompare = function (s, t) {
+  const buildString = (str) => {
+    const result = []
+    for (let i = 0; i < str.length; i++) {
+      if (str[i] != '#') { result.push(str[i]) } else { result.pop() }
     }
 
-    return true
+    return result
+  }
+  // if # occurs, ignore previous char (mark as backspace)
+  const leftArr = buildString(s)
+  const rightArr = buildString(t)
 
+  if (leftArr.length != rightArr.length) {
+    return false
+  } else {
+    for (let i = 0; i < leftArr.length; i++) {
+      if (leftArr[i] != rightArr[i]) { return false }
+    }
+  }
 
-};
+  return true
+}
 
-console.log(backspaceCompare("ab#c", "ad#c")) //true
-console.log(backspaceCompare("ab##", "c#d#")) //true
-console.log(backspaceCompare("a#c", "b")) //false
-console.log(backspaceCompare("a##c", "#a#c")) //true
-console.log(backspaceCompare("a#c", "b")) //false
+console.log(backspaceCompare('ab#c', 'ad#c')) // true
+console.log(backspaceCompare('ab##', 'c#d#')) // true
+console.log(backspaceCompare('a#c', 'b')) // false
+console.log(backspaceCompare('a##c', '#a#c')) // true
+console.log(backspaceCompare('a#c', 'b')) // false

@@ -1,9 +1,7 @@
 /*
-Given a string s, find the length of the longest 
+Given a string s, find the length of the longest
 substring
  without repeating characters.
-
- 
 
 Example 1:
 
@@ -21,7 +19,6 @@ Input: s = "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
- 
 
 Constraints:
 
@@ -33,31 +30,31 @@ s consists of English letters, digits, symbols and spaces.
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    if(s.length <= 1) return s.length; 
-    
-    const seen = {};
-    let left = 0, longest = 0;
-    
-    for(let right = 0; right < s.length; right++) {
-        const currentChar = s[right];
-        const previouslySeenChar = seen[currentChar];
-        
-        if(previouslySeenChar >= left) {
-          left = previouslySeenChar + 1;
-        }
-        
-        seen[currentChar] = right;
-        
-        longest = Math.max(longest, right - left + 1);
-    }
-    
-    return longest;    
-};
+const lengthOfLongestSubstring = function (s) {
+  if (s.length <= 1) return s.length
 
-console.log(lengthOfLongestSubstring("abcabcbb")) // 3
-console.log(lengthOfLongestSubstring("bbbbb")) // 1
-console.log(lengthOfLongestSubstring("pwwkew")) // 3
-console.log(lengthOfLongestSubstring("")) // 0
-console.log(lengthOfLongestSubstring(" ")) // 1
-console.log(lengthOfLongestSubstring("au")) // 2
+  const seen = {}
+  let left = 0; let longest = 0
+
+  for (let right = 0; right < s.length; right++) {
+    const currentChar = s[right]
+    const previouslySeenChar = seen[currentChar]
+
+    if (previouslySeenChar >= left) {
+      left = previouslySeenChar + 1
+    }
+
+    seen[currentChar] = right
+
+    longest = Math.max(longest, right - left + 1)
+  }
+
+  return longest
+}
+
+console.log(lengthOfLongestSubstring('abcabcbb')) // 3
+console.log(lengthOfLongestSubstring('bbbbb')) // 1
+console.log(lengthOfLongestSubstring('pwwkew')) // 3
+console.log(lengthOfLongestSubstring('')) // 0
+console.log(lengthOfLongestSubstring(' ')) // 1
+console.log(lengthOfLongestSubstring('au')) // 2

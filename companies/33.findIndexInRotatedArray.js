@@ -8,7 +8,6 @@ For example, [0,1,2,4,5,6,7] might be rotated at pivot index 3 and become [4,5,6
 Given the array nums after the possible rotation and an integer target, return the index of target if it is in nums, or -1 if it is not in nums.
 
 You must write an algorithm with O(log n) runtime complexity.
-    
 
 Example 1:
 
@@ -23,7 +22,6 @@ Example 3:
 
 Input: nums = [1], target = 0
 Output: -1
- 
 
 Constraints:
 
@@ -39,59 +37,45 @@ nums is an ascending array that is possibly rotated.
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) { 
-    //Binary search implementation
+const search = function (nums, target) {
+  // Binary search implementation
 
-    let low = 0;
-    let high = nums.length - 1
+  let low = 0
+  let high = nums.length - 1
 
-    while(low <= high){
-        let mid = Math.floor((low + high) / 2)
-    
-        //check middle
-        if (nums[mid] === target) {
-            return mid;
-        }
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2)
 
-
-        //cause it is rotated, it is not a classical binary search
-        //check the lower half of the array
-        if(nums[low] <= nums[mid]){
-            if(nums[low] <= target && target < nums[mid]){
-                high = mid - 1
-            }
-            else{
-                low = mid+1
-            }
-
-        }
-
-
-        //check the right half of the array
-        else{ 
-
-            if(nums[mid] < target && target <= nums[high]){
-               low = mid +1
-            }
-            else{
-                high = mid - 1
-            }
-
-
-        }
-
-
-    
-    
+    // check middle
+    if (nums[mid] === target) {
+      return mid
     }
 
-    return -1
+    // cause it is rotated, it is not a classical binary search
+    // check the lower half of the array
+    if (nums[low] <= nums[mid]) {
+      if (nums[low] <= target && target < nums[mid]) {
+        high = mid - 1
+      } else {
+        low = mid + 1
+      }
+    }
 
-};
-console.log(search([4,5,6,7,0,1,2], 0)); // Output: 4
-console.log(search([4,5,6,7,0,1,2], 3)); // Output: -1
-console.log(search([1], 0)); // Output: -1
+    // check the right half of the array
+    else {
+      if (nums[mid] < target && target <= nums[high]) {
+        low = mid + 1
+      } else {
+        high = mid - 1
+      }
+    }
+  }
 
+  return -1
+}
+console.log(search([4, 5, 6, 7, 0, 1, 2], 0)) // Output: 4
+console.log(search([4, 5, 6, 7, 0, 1, 2], 3)) // Output: -1
+console.log(search([1], 0)) // Output: -1
 
 /*
 This implementation differs from a regular binary search because it is designed to handle rotated sorted arrays,

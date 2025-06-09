@@ -7,8 +7,6 @@ bool remove(int val) Removes an item val from the set if present. Returns true i
 int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
 You must implement the functions of the class such that each function works in average O(1) time complexity.
 
- 
-
 Example 1:
 
 Input
@@ -26,7 +24,6 @@ randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
 randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
 randomizedSet.insert(2); // 2 was already in the set, so return false.
 randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
- 
 
 Constraints:
 
@@ -35,52 +32,51 @@ At most 2 * 105 calls will be made to insert, remove, and getRandom.
 There will be at least one element in the data structure when getRandom is called.
 */
 
+const RandomizedSet = function () {
+  this.map = {}
+  this.arr = []
+}
 
-var RandomizedSet = function() {
-    this.map = {};
-    this.arr = [];
-};
-
-/** 
+/**
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.insert = function(val) {
-    if (this.map[val] === undefined) {
-        this.map[val] = this.arr.length;
-        this.arr.push(val);
-        return true;
-    }
-    return false;
-};
+RandomizedSet.prototype.insert = function (val) {
+  if (this.map[val] === undefined) {
+    this.map[val] = this.arr.length
+    this.arr.push(val)
+    return true
+  }
+  return false
+}
 
-/** 
+/**
  * @param {number} val
  * @return {boolean}
  */
-RandomizedSet.prototype.remove = function(val) {
-    if (this.map[val] !== undefined) {
-        var delIndex = this.map[val];
-        var lastVal = this.arr.pop();
-        if (delIndex < this.arr.length) {
-            this.arr[delIndex] = lastVal;
-            this.map[lastVal] = delIndex;
-        }
-        delete this.map[val];
-        return true;
+RandomizedSet.prototype.remove = function (val) {
+  if (this.map[val] !== undefined) {
+    const delIndex = this.map[val]
+    const lastVal = this.arr.pop()
+    if (delIndex < this.arr.length) {
+      this.arr[delIndex] = lastVal
+      this.map[lastVal] = delIndex
     }
-    return false;
-};
+    delete this.map[val]
+    return true
+  }
+  return false
+}
 
 /**
  * @return {number}
  */
-RandomizedSet.prototype.getRandom = function() {
-    const num = Math.floor(Math.random() * this.arr.length);
-    return this.arr[num];
-};
+RandomizedSet.prototype.getRandom = function () {
+  const num = Math.floor(Math.random() * this.arr.length)
+  return this.arr[num]
+}
 
-/** 
+/**
  * Your RandomizedSet object will be instantiated and called as such:
  * var obj = new RandomizedSet()
  * var param_1 = obj.insert(val)
@@ -88,12 +84,11 @@ RandomizedSet.prototype.getRandom = function() {
  * var param_3 = obj.getRandom()
  */
 
-
-const randomizedSet = new RandomizedSet();
-randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
-randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
-randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
-console.log(randomizedSet.getRandom()); // getRandom() should return either 1 or 2 randomly.
-randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
-randomizedSet.insert(2); // 2 was already in the set, so return false.
-console.log(randomizedSet.getRandom()); // Since 2 is the only number in the set, getRandom() will always return 2.
+const randomizedSet = new RandomizedSet()
+randomizedSet.insert(1) // Inserts 1 to the set. Returns true as 1 was inserted successfully.
+randomizedSet.remove(2) // Returns false as 2 does not exist in the set.
+randomizedSet.insert(2) // Inserts 2 to the set, returns true. Set now contains [1,2].
+console.log(randomizedSet.getRandom()) // getRandom() should return either 1 or 2 randomly.
+randomizedSet.remove(1) // Removes 1 from the set, returns true. Set now contains [2].
+randomizedSet.insert(2) // 2 was already in the set, so return false.
+console.log(randomizedSet.getRandom()) // Since 2 is the only number in the set, getRandom() will always return 2.

@@ -2,8 +2,6 @@
 // Merge nums1 and nums2 into a single array sorted in non-decreasing order.
 // The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.
 
- 
-
 // Example 1:
 
 // Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
@@ -23,7 +21,6 @@
 // Explanation: The arrays we are merging are [] and [1].
 // The result of the merge is [1].
 // Note that because m = 0, there are no elements in nums1. The 0 is only there to ensure the merge result can fit in nums1.
- 
 
 // Constraints:
 
@@ -33,8 +30,7 @@
 // 1 <= m + n <= 200
 // -109 <= nums1[i], nums2[j] <= 109
 
-//Bonus: Can you come up with an algorithm that runs in O(m + n) time?
-
+// Bonus: Can you come up with an algorithm that runs in O(m + n) time?
 
 /**
  * @param {number[]} nums1
@@ -50,18 +46,16 @@
 
 // };
 
+const merge = function (nums1, m, nums2, n) {
+  for (i = m, j = 0; j < n; i++, j++) {
+    nums1[i] = nums2[j]
+  }
+  return nums1.sort((a, b) => a - b) // sort in asc way.
+}
 
-var merge = function(nums1, m, nums2, n) {
-    for(i = m, j = 0; j < n; i++, j++){
-        nums1[i] = nums2[j]
-    }
-    return nums1.sort((a,b) => a-b) //sort in asc way.
-
-};
-
-console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3)) // [1,2,2,3,5,6]
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3)) // [1,2,2,3,5,6]
 console.log(merge([1], 1, [], 0)) // [1]
 console.log(merge([0], 0, [1], 1)) // [1]
 console.log(merge([0], 0, [1], 1)) // [1]
 
-console.log(merge([-10,-10,-9,-9,-9,-8,-8,-7,-7,-7,-6,-6,-6,-6,-6,-6,-6,-5,-5,-5,-4,-4,-4,-3,-3,-2,-2,-1,-1,0,1,1,1,2,2,2,3,3,3,4,5,5,6,6,6,6,7,7,7,7,8,9,9,9,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0], 55, [-10,-10,-9,-9,-9,-9,-8,-8,-8,-8,-8,-7,-7,-7,-7,-7,-7,-7,-7,-6,-6,-6,-6,-5,-5,-5,-5,-5,-4,-4,-4,-4,-4,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,0,0,0,0,0,1,1,1,2,2,2,2,2,2,2,2,3,3,3,3,4,4,4,4,4,4,4,5,5,5,5,5,5,6,6,6,6,6,7,7,7,7,7,7,7,8,8,8,8,9,9,9,9], 99))
+console.log(merge([-10, -10, -9, -9, -9, -8, -8, -7, -7, -7, -6, -6, -6, -6, -6, -6, -6, -5, -5, -5, -4, -4, -4, -3, -3, -2, -2, -1, -1, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7, 8, 9, 9, 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 55, [-10, -10, -9, -9, -9, -9, -8, -8, -8, -8, -8, -7, -7, -7, -7, -7, -7, -7, -7, -6, -6, -6, -6, -5, -5, -5, -5, -5, -4, -4, -4, -4, -4, -3, -3, -3, -2, -2, -2, -2, -2, -2, -2, -1, -1, -1, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9], 99))

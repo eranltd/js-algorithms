@@ -44,44 +44,44 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
  * @param {number} numRows
  * @return {string}
  */
-var convert = function(s, numRows) {
-    if (numRows === 1 || s.length < numRows) {
-        return s;
-      }
-      let rows = [];
-      let currentRow = 0;
-      let reverse = false;
-      let result = "";
-    
-      for (let i = 0; i < numRows; i++) {
-        rows[i] = [];
-      }
-    
-      for (let i = 0; i < s.length; i++) {
-        rows[currentRow].push(s[i]);
-        if (reverse === false) {
-          currentRow++;
-        } else {
-          currentRow--;
-        }
-    
-        if (currentRow === numRows - 1 || currentRow === 0) {
-          reverse = !reverse;
-        }
-      }
-    
-      rows.forEach((row) => {
-        result += row.join("");
-      });
-    
-      return result;
-};
+const convert = function (s, numRows) {
+  if (numRows === 1 || s.length < numRows) {
+    return s
+  }
+  const rows = []
+  let currentRow = 0
+  let reverse = false
+  let result = ''
 
-console.log(convert("PAYPALISHIRING", 3)) // "PAHNAPLSIIGYIR"
-console.log(convert("PAYPALISHIRING", 4)) // "PINALSIGYAHRPI"
-console.log(convert("A", 1)) // "A"
-console.log(convert("AB", 1)) // "AB"
-console.log(convert("ABC", 1)) // "ABC"
-console.log(convert("ABCD", 1)) // "ABCD"
-console.log(convert("ABCDE", 1)) // "ABCDE"
-console.log(convert("ABCDEF", 1)) // "ABCDEF"
+  for (let i = 0; i < numRows; i++) {
+    rows[i] = []
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    rows[currentRow].push(s[i])
+    if (reverse === false) {
+      currentRow++
+    } else {
+      currentRow--
+    }
+
+    if (currentRow === numRows - 1 || currentRow === 0) {
+      reverse = !reverse
+    }
+  }
+
+  rows.forEach((row) => {
+    result += row.join('')
+  })
+
+  return result
+}
+
+console.log(convert('PAYPALISHIRING', 3)) // "PAHNAPLSIIGYIR"
+console.log(convert('PAYPALISHIRING', 4)) // "PINALSIGYAHRPI"
+console.log(convert('A', 1)) // "A"
+console.log(convert('AB', 1)) // "AB"
+console.log(convert('ABC', 1)) // "ABC"
+console.log(convert('ABCD', 1)) // "ABCD"
+console.log(convert('ABCDE', 1)) // "ABCDE"
+console.log(convert('ABCDEF', 1)) // "ABCDEF"

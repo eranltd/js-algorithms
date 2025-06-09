@@ -21,7 +21,7 @@
     - Travel to station 2. Your tank = 6 - 4 + 3 = 5
     - Travel to station 3. The cost is 5. Your gas is just enough to travel back to station 3.
       Therefore, return 3 as the starting index.
-    
+
     Example 2:
 
     Input: gas = [2,3,4], cost = [3,4,3]
@@ -33,7 +33,6 @@
     Travel to station 1. Your tank = 3 - 3 + 3 = 3
     You cannot travel back to station 2, as it requires 4 unit of gas but you only have 3.
     Therefore, you can't travel around the circuit once no matter where you start.
- 
 
 Constraints:
 
@@ -47,24 +46,24 @@ n == gas.length == cost.length
  * @param {number[]} cost
  * @return {number}
  */
-var canCompleteCircuit = function(gas, cost) {//ΣGas forever should be bigger than ΣCost forever else -1
-  //gas = [1,2,3,4,5], cost = [3,4,5,1,2]
-  let length = gas.length;
-  let gasAvailable = 0; 
-  let freeGasAtStation = 0;
-  let paid = 0; //total cost
-  let startingPoint = 0; //which station to start
+const canCompleteCircuit = function (gas, cost) { // ΣGas forever should be bigger than ΣCost forever else -1
+  // gas = [1,2,3,4,5], cost = [3,4,5,1,2]
+  const length = gas.length
+  let gasAvailable = 0
+  let freeGasAtStation = 0
+  let paid = 0 // total cost
+  let startingPoint = 0 // which station to start
 
-  for (let i=0; i < length; i++) { //travel all stations
-      freeGasAtStation += gas[i];
-      paid += cost[i];
-      gasAvailable += gas[i] - cost[i];
-      if (gasAvailable < 0) { //search for the first postive where cost[i] < gas[i], starting point.
-          gasAvailable = 0;
-          startingPoint = i + 1;
-      }
+  for (let i = 0; i < length; i++) { // travel all stations
+    freeGasAtStation += gas[i]
+    paid += cost[i]
+    gasAvailable += gas[i] - cost[i]
+    if (gasAvailable < 0) { // search for the first postive where cost[i] < gas[i], starting point.
+      gasAvailable = 0
+      startingPoint = i + 1
+    }
   }
-  return paid > freeGasAtStation ? -1 : startingPoint;
-};
+  return paid > freeGasAtStation ? -1 : startingPoint
+}
 
-console.log(canCompleteCircuit([1,2,3,4,5], [3,4,5,1,2])); // 3
+console.log(canCompleteCircuit([1, 2, 3, 4, 5], [3, 4, 5, 1, 2])) // 3

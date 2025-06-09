@@ -1,9 +1,7 @@
-/*Given the root of a binary tree,
+/* Given the root of a binary tree,
  return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
 
-
 Example 1:
-
 
 Input: root = [3,9,20,null,null,15,7]
 Output: [[3],[9,20],[15,7]]
@@ -15,7 +13,6 @@ Example 3:
 
 Input: root = []
 Output: []
- 
 
 Constraints:
 
@@ -29,33 +26,33 @@ NOTE: The beginning portion builds our test case binary tree. Scroll down to the
 
 // ------- Code to generate our binary tree -------
 class TreeNode {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
+  constructor (value) {
+    this.value = value
+    this.left = null
+    this.right = null
   }
 
-  insert(values) {
-    const queue = [this];
-    let i = 0;
+  insert (values) {
+    const queue = [this]
+    let i = 0
     while (queue.length > 0) {
-      let current = queue.shift();
-      for (let side of ["left", "right"]) {
+      const current = queue.shift()
+      for (const side of ['left', 'right']) {
         if (!current[side]) {
           if (values[i] !== null) {
-            current[side] = new TreeNode(values[i]);
+            current[side] = new TreeNode(values[i])
           }
-          i++;
-          if (i >= values.length) return this;
+          i++
+          if (i >= values.length) return this
         }
-        if (current[side]) queue.push(current[side]);
+        if (current[side]) queue.push(current[side])
       }
     }
-    return this;
+    return this
   }
 }
 
-const tree = new TreeNode(3);
+const tree = new TreeNode(3)
 tree.insert([
   6,
   1,
@@ -72,31 +69,31 @@ tree.insert([
   8,
   null,
   null,
-  null,
-]);
+  null
+])
 // ------- Code to generate our binary tree -------
 
 const levelOrder = function (root) {
-  if (!root) return [];
-  const result = [];
-  const queue = [root];
+  if (!root) return []
+  const result = []
+  const queue = [root]
 
   while (queue.length) {
-    const currentNodesArray = [];
-    let count = 0;
+    const currentNodesArray = []
+    let count = 0
 
     while (count < queue.length) {
-      const currentNode = queue.shift();
+      const currentNode = queue.shift()
       currentNodesArray.push(currentNode.value)
 
-      if (currentNode.left) queue.push(currentNode.left);
-      if (currentNode.right) queue.push(currentNode.right);
+      if (currentNode.left) queue.push(currentNode.left)
+      if (currentNode.right) queue.push(currentNode.right)
 
-      count++;
+      count++
     }
-    result.push(currentNodesArray);
+    result.push(currentNodesArray)
   }
   return result
-};
+}
 
-console.log(levelOrder(tree));
+console.log(levelOrder(tree))

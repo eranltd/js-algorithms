@@ -7,8 +7,6 @@ The tests are generated such that there is exactly one solution. You may not use
 
 Your solution must use only constant extra space.
 
- 
-
 Example 1:
 
 Input: numbers = [2,7,11,15], target = 9
@@ -24,7 +22,6 @@ Example 3:
 Input: numbers = [-1,0], target = -1
 Output: [1,2]
 Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
- 
 
 Constraints:
 
@@ -40,21 +37,21 @@ The tests are generated such that there is exactly one solution.
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(numbers, target) {
-      // Start a pointer on each side of the array
-      let left = 0;
-      let right = numbers.length-1
-      while(left < right) {
-          const cur = numbers[left] + numbers[right];
-          // Return 1 base index if the current sum is equal to the target
-          if(cur === target) return [left+1, right+1]
-          // Because the array is sorted, anytime we move a pointer to the right numbers will get bigger and anytime we move a pointer to the left, numbers will get smaller
-          // If cur is greater than target that means we need to use smaller numbers in our sum and we move the right pointer to the left.
-          // If cur is less than target that means we need to use bigger number in our sum and we move the left pointer to the right.
-          cur > target ? right-- : left++
-      }
-};
+const twoSum = function (numbers, target) {
+  // Start a pointer on each side of the array
+  let left = 0
+  let right = numbers.length - 1
+  while (left < right) {
+    const cur = numbers[left] + numbers[right]
+    // Return 1 base index if the current sum is equal to the target
+    if (cur === target) return [left + 1, right + 1]
+    // Because the array is sorted, anytime we move a pointer to the right numbers will get bigger and anytime we move a pointer to the left, numbers will get smaller
+    // If cur is greater than target that means we need to use smaller numbers in our sum and we move the right pointer to the left.
+    // If cur is less than target that means we need to use bigger number in our sum and we move the left pointer to the right.
+    cur > target ? right-- : left++
+  }
+}
 
-console.log(twoSum([2,7,11,15], 9)) // [1,2]
-console.log(twoSum([2,3,4], 6)) // [1,3]
-console.log(twoSum([-1,0], -1)) // [
+console.log(twoSum([2, 7, 11, 15], 9)) // [1,2]
+console.log(twoSum([2, 3, 4], 6)) // [1,3]
+console.log(twoSum([-1, 0], -1)) // [

@@ -3,8 +3,6 @@
 
 According to the definition of h-index on Wikipedia: The h-index is defined as the maximum value of h such that the given researcher has published at least h papers that have each been cited at least h times.
 
- 
-
 Example 1:
 
 Input: citations = [3,0,6,1,5]
@@ -15,7 +13,6 @@ Example 2:
 
 Input: citations = [1,3,1]
 Output: 1
- 
 
 Constraints:
 
@@ -37,31 +34,30 @@ n == citations.length
 //     }
 //     return hIndex
 // };
-var hIndex = function(citations) {
-    const running = citations.length;
-    const sortedArray = citations.sort((a,b) => a - b);
-    let hIndex = 0;
-    for (let i = 0; i < running; i++) {
-        if (sortedArray[running - i - 1] > i) {
-            hIndex++;
-        }
+const hIndex = function (citations) {
+  const running = citations.length
+  const sortedArray = citations.sort((a, b) => a - b)
+  let hIndex = 0
+  for (let i = 0; i < running; i++) {
+    if (sortedArray[running - i - 1] > i) {
+      hIndex++
     }
-    return hIndex
-};
+  }
+  return hIndex
+}
 
-console.log('hIndex([3,0,6,1,5])',hIndex([3,0,6,1,5])); // 3
-console.log('hIndex([1,3,1])',hIndex([1,3,1])); // 1
-console.log('hIndex([1])',hIndex([1])); // 1
-console.log('hIndex([0])',hIndex([0])); // 0
-console.log('hIndex([0,0])',hIndex([0,0])); // 0
-console.log('hIndex([1,1])',hIndex([1,1])); // 1
-console.log('hIndex([1,1,1])',hIndex([1,1,1])); // 1
-console.log('hIndex([1,1,1,1])',hIndex([1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1])',hIndex([1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1])',hIndex([1,1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1,1])',hIndex([1,1,1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1,1,1])',hIndex([1,1,1,1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1,1,1,1])',hIndex([1,1,1,1,1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1,1,1,1,1])',hIndex([1,1,1,1,1,1,1,1,1,1])); // 1
-console.log('hIndex([1,1,1,1,1,1,1,1,1,1,1])',hIndex([1,1,1,1,1,1,1,1,1,1,1])); // 1
-
+console.log('hIndex([3,0,6,1,5])', hIndex([3, 0, 6, 1, 5])) // 3
+console.log('hIndex([1,3,1])', hIndex([1, 3, 1])) // 1
+console.log('hIndex([1])', hIndex([1])) // 1
+console.log('hIndex([0])', hIndex([0])) // 0
+console.log('hIndex([0,0])', hIndex([0, 0])) // 0
+console.log('hIndex([1,1])', hIndex([1, 1])) // 1
+console.log('hIndex([1,1,1])', hIndex([1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1])', hIndex([1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1])', hIndex([1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) // 1
+console.log('hIndex([1,1,1,1,1,1,1,1,1,1,1])', hIndex([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) // 1

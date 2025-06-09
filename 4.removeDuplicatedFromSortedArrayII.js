@@ -22,8 +22,6 @@ for (int i = 0; i < k; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
- 
-
 Example 1:
 
 Input: nums = [1,1,1,2,2,3]
@@ -36,34 +34,33 @@ Input: nums = [0,0,1,1,1,1,2,3,3]
 Output: 7, nums = [0,0,1,1,2,3,3,_,_]
 Explanation: Your function should return k = 7, with the first seven elements of nums being 0, 0, 1, 1, 2, 3 and 3 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
- 
+
  */
 
 /**
  * @param {number[]} nums
  * @return {number}
  */
-function removeDuplicates(nums) {
-    // Initialize the count, k, to be the index at which we insert the next unique element.
-    let k = 0;
+function removeDuplicates (nums) {
+  // Initialize the count, k, to be the index at which we insert the next unique element.
+  let k = 0
 
-    // Iterate through each number in the given array.
-    for (const current of nums) {
-        // If the count is less than 2 or the current number is not equal to
-        // the number two places before in the array, it is not a duplicate (or it's
-        // the second occurrence of a number that is allowed twice), so we add it to the array.
-        if (k < 2 || current !== nums[k - 2]) {
-            nums[k] = current;
-            k++; // Increment the count since we've added a unique number.
-        }
+  // Iterate through each number in the given array.
+  for (const current of nums) {
+    // If the count is less than 2 or the current number is not equal to
+    // the number two places before in the array, it is not a duplicate (or it's
+    // the second occurrence of a number that is allowed twice), so we add it to the array.
+    if (k < 2 || current !== nums[k - 2]) {
+      nums[k] = current
+      k++ // Increment the count since we've added a unique number.
     }
+  }
 
-    // Return the new length of the array after duplicates have been removed.
-    // Elements after the returned length are considered irrelevant.
-    return k;
+  // Return the new length of the array after duplicates have been removed.
+  // Elements after the returned length are considered irrelevant.
+  return k
 }
 
-const arr = [0,0,1,1,1,1,2,3,3]
-console.log('k=', removeDuplicates(arr)) //[0,0,1,1,1,1,2,3,3] //7
-console.log('arr=', (arr)) //[0,0,1,1,1,1,2,3,3] //7
-
+const arr = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+console.log('k=', removeDuplicates(arr)) // [0,0,1,1,1,1,2,3,3] //7
+console.log('arr=', (arr)) // [0,0,1,1,1,1,2,3,3] //7

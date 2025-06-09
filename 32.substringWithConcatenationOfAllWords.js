@@ -5,7 +5,6 @@ A concatenated string is a string that exactly contains all the strings of any p
 For example, if words = ["ab","cd","ef"], then "abcdef", "abefcd", "cdabef", "cdefab", "efabcd", and "efcdab" are all concatenated strings. "acdbef" is not a concatenated string because it is not the concatenation of any permutation of words.
 Return an array of the starting indices of all the concatenated substrings in s. You can return the answer in any order.
 
-
 Example 1:
 
     Input: s = "barfoothefoobarman", words = ["foo","bar"]
@@ -38,8 +37,6 @@ Explanation:
     The substring starting at 6 is "foobarthe". It is the concatenation of ["foo","bar","the"].
     The substring starting at 9 is "barthefoo". It is the concatenation of ["bar","the","foo"].
     The substring starting at 12 is "thefoobar". It is the concatenation of ["the","foo","bar"].
-
- 
 
 Constraints:
 
@@ -84,58 +81,56 @@ Solution:
  * @param {string[]} words
  * @return {number[]}
  */
-var findSubstring = function(s, words) { //Input: s = "barfoothefoobarman", words = ["foo","bar"]
-    
-    const numberOfWords = words.length;
-    
-    if (s.length === 0 || numberOfWords === 0) return [];
-    
-    const wordLength = words[0].length; //all of the words are within the same length
-    const totalLength = wordLength * numberOfWords;
-    
-    const wordCount = {};
-    const result = []; //will hold occurrences of the start of the substring
-    
-    // Count occurrences of each word
-    for (const word of words) {
-        if (wordCount[word] == null) {
-            wordCount[word] = 0;
-        }
-        wordCount[word]++;
+const findSubstring = function (s, words) { // Input: s = "barfoothefoobarman", words = ["foo","bar"]
+  const numberOfWords = words.length
+
+  if (s.length === 0 || numberOfWords === 0) return []
+
+  const wordLength = words[0].length // all of the words are within the same length
+  const totalLength = wordLength * numberOfWords
+
+  const wordCount = {}
+  const result = [] // will hold occurrences of the start of the substring
+
+  // Count occurrences of each word
+  for (const word of words) {
+    if (wordCount[word] == null) {
+      wordCount[word] = 0
     }
-    
-    // Check each possible starting position
-    const outerLoopRunningCount = s.length - totalLength;
-    for (let i = 0; i <= outerLoopRunningCount; i++) {
-        const seenWords = {};
-        let isValid = true;
+    wordCount[word]++
+  }
 
-        for (let j = 0; j < numberOfWords; j++) {
-            const start = i + j * wordLength;
-            const word = s.slice(start, start + wordLength);
+  // Check each possible starting position
+  const outerLoopRunningCount = s.length - totalLength
+  for (let i = 0; i <= outerLoopRunningCount; i++) {
+    const seenWords = {}
+    let isValid = true
 
-            if (!(word in wordCount)) {
-                isValid = false;
-                break;
-            }
+    for (let j = 0; j < numberOfWords; j++) {
+      const start = i + j * wordLength
+      const word = s.slice(start, start + wordLength)
 
-            seenWords[word] = (seenWords[word] ?? 0) + 1;
+      if (!(word in wordCount)) {
+        isValid = false
+        break
+      }
 
-            if (seenWords[word] > wordCount[word]) {
-                isValid = false;
-                break;
-            }
-        }
+      seenWords[word] = (seenWords[word] ?? 0) + 1
 
-        if (isValid) result.push(i);
+      if (seenWords[word] > wordCount[word]) {
+        isValid = false
+        break
+      }
     }
-    
-    return result;
-    
-};
 
-console.log(findSubstring("barfoothefoobarman", ["foo","bar"])) // [0,9]
-console.log(findSubstring("wordgoodgoodgoodbestword", ["word","good","best","word"])) // []
-console.log(findSubstring("barfoofoobarthefoobarman", ["bar","foo","the"])) // [6,9,12]
-console.log(findSubstring("barfoofoobarthefoobarman", ["bar","foo","the"])) // [6,9,12]
-console.log(findSubstring("barfoofoobarthefoobarman", ["bar","foo","the"])) // [6,9,12]
+    if (isValid) result.push(i)
+  }
+
+  return result
+}
+
+console.log(findSubstring('barfoothefoobarman', ['foo', 'bar'])) // [0,9]
+console.log(findSubstring('wordgoodgoodgoodbestword', ['word', 'good', 'best', 'word'])) // []
+console.log(findSubstring('barfoofoobarthefoobarman', ['bar', 'foo', 'the'])) // [6,9,12]
+console.log(findSubstring('barfoofoobarthefoobarman', ['bar', 'foo', 'the'])) // [6,9,12]
+console.log(findSubstring('barfoofoobarthefoobarman', ['bar', 'foo', 'the'])) // [6,9,12]

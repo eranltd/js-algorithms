@@ -21,8 +21,6 @@ for (int i = 0; i < actualLength; i++) {
 }
 If all assertions pass, then your solution will be accepted.
 
- 
-
 Example 1:
 
 Input: nums = [3,2,2,3], val = 3
@@ -36,7 +34,6 @@ Output: 5, nums = [0,1,4,0,3,_,_,_]
 Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.
 Note that the five elements can be returned in any order.
 It does not matter what you leave beyond the returned k (hence they are underscores).
- 
 
 Constraints:
 
@@ -46,13 +43,13 @@ Constraints:
 
 */
 
- var removeElement = function(nums, val) {
-    let k = 0;
-    for(let i = 0; i < nums.length; i++){
-        if(nums[i] !== val){
-            nums[k] = nums[i]
-            k++
-        }
+const removeElement = function (nums, val) {
+  let k = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== val) {
+      nums[k] = nums[i]
+      k++
     }
-    return k 
+  }
+  return k
 }
