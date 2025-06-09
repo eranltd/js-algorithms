@@ -51,22 +51,18 @@ const search = function (nums, target) {
       return mid
     }
 
-    // cause it is rotated, it is not a classical binary search
-    // check the lower half of the array
-    if (nums[low] <= nums[mid]) {
-      if (nums[low] <= target && target < nums[mid]) {
-        high = mid - 1
+    // Determine which half is sorted and adjust search range accordingly
+    if (nums[low] <= nums[mid]) { // Left half is sorted
+      if (nums[low] <= target && target <= nums[mid]) {
+        high = mid - 1; // Target is in the sorted left half
       } else {
-        low = mid + 1
+        low = mid + 1; // Target is in the right half
       }
-    }
-
-    // check the right half of the array
-    else {
-      if (nums[mid] < target && target <= nums[high]) {
-        low = mid + 1
+    } else { // Right half is sorted
+      if (nums[mid] <= target && target <= nums[high]) {
+        low = mid + 1; // Target is in the sorted right half
       } else {
-        high = mid - 1
+        high = mid - 1; // Target is in the left half
       }
     }
   }
