@@ -2,7 +2,7 @@
 Problem Description
 The task is to find the *longest* valid password from a string containing words separated by spaces. (0-n chars)
 Return the longest word that is a valid password
- 
+
 A valid password must meet these criteria:
     It consists only of alphanumeric characters (a-z, A-Z, 0-9).
     It contains an even number of letters.
@@ -12,7 +12,7 @@ A valid password must meet these criteria:
 
 /**
  * Reminder : Types of for loops in JavaScript
- * 
+ *
  * 1.for...of loop:  for (const object of collection)  :This loop iterates over the values of an iterable object (e.g., arrays, strings, maps, sets).
  * 2.for...in loop:  for (variable in object) :This loop iterates over the properties of an object.
  * 3.for(let i=0;i<100;i++)
@@ -23,57 +23,49 @@ A valid password must meet these criteria:
  */
 
 const checkDigit = (char) => {
-    return char >='0' && char <='9'
+  return char >= '0' && char <= '9'
 }
 
-const checkIsLetter = (char) =>{
-    return char >='a' && char <='z' ||  char >='A' && char <='Z' 
+const checkIsLetter = (char) => {
+  return char >= 'a' && char <= 'z' || char >= 'A' && char <= 'Z'
 }
 
 const checkAlphanumeric = (char) => {
-    return checkIsLetter(char) ||  checkDigit(char)
+  return checkIsLetter(char) || checkDigit(char)
 }
-
-
 
 const isValidWord = (word) => {
-    let letterCount = 0
-    let digitsCount = 0
+  let letterCount = 0
+  let digitsCount = 0
 
-    word.forEach(char => {
-        let isDigit = checkDigit(char)
-        let isLetter = checkIsLetter(char)
-        if(isDigit)
-            digitsCount++
+  word.forEach(char => {
+    const isDigit = checkDigit(char)
+    const isLetter = checkIsLetter(char)
+    if (isDigit) { digitsCount++ }
 
-        if(isLetter)
-            letterCount++
+    if (isLetter) { letterCount++ }
 
-        if(!isDigit || !isLetter)
-            return false
-    })
+    if (!isDigit || !isLetter) { return false }
+  })
 
-    return digitsCount % 2 !=0 && letterCount %2 ==0
-
+  return digitsCount % 2 != 0 && letterCount % 2 == 0
 }
 
+function longestPassword (s) {
+  // example string: "test 5 a0A pass007 ? xy1";
 
-function longestPassword(s) {
-    //example string: "test 5 a0A pass007 ? xy1";
+  // there is not need to store words, only the longest length
 
-    //there is not need to store words, only the longest length
-
-    //Step 1: break into words and check constraints against each word:
-    let maxLength = -1
-    const wordsToCheck = s.split(" ")
-    for(const word of wordsToCheck){
-        if(isValidWord){
-            maxLength = Math.max(maxLength, word.length)
-        }
+  // Step 1: break into words and check constraints against each word:
+  let maxLength = -1
+  const wordsToCheck = s.split(' ')
+  for (const word of wordsToCheck) {
+    if (isValidWord) {
+      maxLength = Math.max(maxLength, word.length)
     }
+  }
 
-    return maxLength
-
+  return maxLength
 }
 
 /*
@@ -102,8 +94,8 @@ Helper Functions:
 
 /* Example usage: */
 
-const inputString = "test 5 a0A pass007 ? xy1";
-const anotherInput = "nfjdk a90d sdnfjk73829 NJKS!mdkjld"
+const inputString = 'test 5 a0A pass007 ? xy1'
+const anotherInput = 'nfjdk a90d sdnfjk73829 NJKS!mdkjld'
 
-console.log(`Testing longest password per word for: [${inputString}]`,longestPassword(inputString)); // Output: 7
-console.log(`Testing longest password per word for: [${anotherInput}]`, longestPassword(anotherInput)); // Output: 11
+console.log(`Testing longest password per word for: [${inputString}]`, longestPassword(inputString)) // Output: 7
+console.log(`Testing longest password per word for: [${anotherInput}]`, longestPassword(anotherInput)) // Output: 11
