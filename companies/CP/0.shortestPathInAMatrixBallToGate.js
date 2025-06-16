@@ -121,24 +121,22 @@ const inRange = (i, j, maze) => {
  * @returns {number[]} An array containing the final [x, y] coordinates after walking.
  */
 function walk (x, y, dx, dy, maze) {
-
   while (inRange(x + dx, y + dy, maze)) {
-   
     x += dx, y += dy
   }
   return [x, y]
 }
 
 const hasPath = function (maze, start, dest) {
-    console.log('start', maze[start[0],start[1]])
-    console.log('dest', maze[dest[0],dest[1]])
+  console.log('start', maze[start[0], start[1]])
+  console.log('dest', maze[dest[0], dest[1]])
 
-const DIRS = [
+  const DIRS = [
     [-1, 0], // up
-    [0, 1],  // right
-    [1, 0],  // down
-    [0, -1]  // left
-]
+    [0, 1], // right
+    [1, 0], // down
+    [0, -1] // left
+  ]
 
   // BFS traversal
   const queue = [start]
@@ -154,7 +152,7 @@ const DIRS = [
         const walkOncePosition = walk(x, y, dx, dy, maze)
         const key = walkOncePosition.join() // convert 1,1 ->11, 4,5 ->45
 
-        if (!visited.has(key)) { //keep track of nodes, and enable recursion
+        if (!visited.has(key)) { // keep track of nodes, and enable recursion
           visited.add(key)
           queue.push(walkOncePosition)
         }
@@ -165,9 +163,9 @@ const DIRS = [
 }
 
 // Driver
-const matrix = [[0,0,1,0,0],[0,0,0,0,0],[0,0,0,1,0],[1,1,0,1,1],[0,0,0,0,0]]
-const start = [0, 4];
-const destination = [4, 4];
+const matrix = [[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [1, 1, 0, 1, 1], [0, 0, 0, 0, 0]]
+const start = [0, 4]
+const destination = [4, 4]
 // One possible way is : left -> down -> left -> down -> right -> down -> right.
 
 console.log(hasPath(matrix, start, destination)) // true
