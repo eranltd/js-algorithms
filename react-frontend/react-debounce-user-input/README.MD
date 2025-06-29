@@ -20,3 +20,16 @@ Create a search input field that fetches search results from an API as the user 
 
 5. **How to handle ongoing API requests?**
     - What approaches can cancel previous API requests if a new search query is entered before the previous one completes?
+
+6. **How to handle errors in API calls?**
+    - What is the best way to inform the user if an error occurs during the API call?
+
+7. **Show nice spinner | animations**
+    - while fetching the data, show a spinner or some animation to indicate loading. (your choice)
+
+## Notes
+- use fake API like [JSONPlaceholder](https://jsonplaceholder.typicode.com/) or [Mocky](https://www.mocky.io/) for the actual API call.
+
+- you can also use DuckDuckGo Instant Answer API:
+  - search_term is the query string parameter (input value)
+  - https://api.duckduckgo.com/?q={search_term}&format=json&no_redirect=1&no_html=1&skip_disambig=1
