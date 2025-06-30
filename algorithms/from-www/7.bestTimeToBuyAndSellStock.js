@@ -27,19 +27,19 @@ Constraints:
  * @param {number[]} prices
  * @return {number}
  */
-const maxProfit = function (prices) { // [7,1,5,3,6,4] // 2 pointers approch
-  let buyStock = 0 // buy
-  let sellStock = 1 // sell
+const maxProfit = function (prices) { // [7,1,5,3,6,4]
+  let p1 = 0
+  let p2 = 1
   let maxProfit = 0
 
-  while (sellStock < prices.length) { // [1...n]
-    if (prices[buyStock] < prices[sellStock]) { // [0...n] < [1...n]
-      const profit = prices[sellStock] - prices[buyStock] // right has to be higher always, else negative
-      maxProfit = Math.max(maxProfit, profit)
-    } else {
-      buyStock = sellStock // we always have to be with left pointer smaller than the right one, else no profit
+  while (p2 < prices.length) {
+    if (prices[p1] < prices[p2]) {
+      const tempProfit = prices[p2] - prices[p1]
+      maxProfit = Math.max(maxProfit, tempProfit)
+    } else if (prices[p1] > prices[p2]) {
+      p1 = p2
     }
-    sellStock++
+    p2++
   }
   return maxProfit
 }
