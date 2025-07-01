@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Element Selection & Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8; /* Light background */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #2d3748; /* Dark gray text */
+        }
+        .container {
+            background-color: #ffffff; /* White background for the container */
+            border: 1px solid #e2e8f0; /* Light border */
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 700px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #1a202c; /* Gray-900 */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: #2d3748; /* Gray-800 */
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        .counter-display {
+            background-color: #4299e1; /* Blue-500 */
+            color: white;
+            font-size: 3rem; /* text-5xl */
+            font-weight: 800; /* font-extrabold */
+            padding: 1.5rem 3rem;
+            border-radius: 9999px; /* Full rounded (pill shape) */
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out;
+            user-select: none; /* Prevent text selection on click */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .counter-display:hover {
+            background-color: #3182ce; /* Blue-600 */
+            transform: translateY(-2px);
+        }
+        .counter-display:active {
+            background-color: #2b6cb0; /* Blue-700 */
+            transform: translateY(0);
+        }
+        .example-section {
+            background-color: #f7fafc; /* Gray-50 */
+            border: 1px dashed #cbd5e1; /* Gray-300 */
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            width: 100%;
+        }
+        .example-section p, .example-section ul {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+        .example-section ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .example-section code {
+            background-color: #edf2f7; /* Gray-200 */
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: monospace;
+            font-size: 0.9em;
+            color: #2d3748;
+        }
+        .highlight {
+            font-weight: 600;
+            color: #805ad5; /* Purple-600 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Vanilla JavaScript DOM Interaction</h1>
+
+        <!-- Counter Example -->
+        <h2>Interactive Counter</h2>
+        <p class="text-lg text-center">Click the circle below to increment the count:</p>
+        <div id="counter" class="counter-display">0</div>
+
+        <!-- DOM Element Selection Examples -->
+        <h2>DOM Element Selection Methods</h2>
+        <div class="example-section">
+            <p>This section demonstrates different ways to select HTML elements using JavaScript.</p>
+
+            <!-- Element with ID -->
+            <p id="uniqueParagraph" class="text-sm text-gray-700">
+                This is a paragraph with a <code class="highlight">unique ID</code>.
+            </p>
+
+            <!-- Elements with Class -->
+            <p class="commonClass text-sm text-gray-700">
+                This paragraph shares a <code class="highlight">common class</code>.
+            </p>
+            <span class="commonClass text-sm text-gray-700">
+                This span also shares the <code class="highlight">common class</code>.
+            </span>
+
+            <!-- Elements by Tag Name -->
+            <ul id="myList" class="list-disc ml-5 text-sm text-gray-700">
+                <li>List Item One</li>
+                <li>List Item Two</li>
+                <li>List Item Three</li>
+            </ul>
+
+            <!-- Element for querySelector/querySelectorAll -->
+            <div class="selector-test text-sm text-gray-700">
+                <p class="first-child">This is the <code class="highlight">first child</code> paragraph.</p>
+                <p class="second-child">This is the <code class="highlight">second child</code> paragraph.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Interactive Counter Logic ---
+            const counterElement = document.getElementById('counter');
+            let count = 0;
+
+            if (counterElement) {
+                counterElement.textContent = count; // Initialize display
+
+                // Attach event listener using addEventListener()
+                counterElement.addEventListener('click', () => {
+                    count++; // Increment count
+                    counterElement.textContent = count; // Update display
+                    console.log('Counter clicked! New count:', count);
+                });
+            } else {
+                console.error("Counter element with ID 'counter' not found!");
+            }
+
+            // --- DOM Element Selection Examples ---
+            console.log("\n--- DOM Element Selection Examples ---");
+
+            // 1. document.getElementById()
+            // Best for unique elements. Returns a single Element object or null.
+            const uniqueParagraph = document.getElementById('uniqueParagraph');
+            if (uniqueParagraph) {
+                console.log("getElementById('uniqueParagraph'):", uniqueParagraph.textContent);
+                uniqueParagraph.style.backgroundColor = '#fefcbf'; // Light yellow background
+                uniqueParagraph.style.borderRadius = '0.25rem';
+                uniqueParagraph.style.padding = '0.25rem';
+            }
+
+            // 2. document.getElementsByClassName()
+            // Returns an HTMLCollection (live collection) of elements.
+            const commonClassElements = document.getElementsByClassName('commonClass');
+            console.log("getElementsByClassName('commonClass'):", commonClassElements);
+            // Iterate through the collection (it's not a true Array, so no forEach directly)
+            for (let i = 0; i < commonClassElements.length; i++) {
+                commonClassElements[i].style.color = '#7c3aed'; // Purple-500
+            }
+
+            // 3. document.getElementsByTagName()
+            // Returns an HTMLCollection (live collection) of elements.
+            const listItems = document.getElementsByTagName('li');
+            console.log("getElementsByTagName('li'):", listItems);
+            for (let i = 0; i < listItems.length; i++) {
+                listItems[i].style.fontWeight = 'bold';
+            }
+
+            // 4. document.querySelector()
+            // Returns the first Element that matches the specified CSS selector, or null.
+            // Very versatile, uses CSS selector syntax.
+            const firstChildParagraph = document.querySelector('.selector-test .first-child');
+            if (firstChildParagraph) {
+                console.log("querySelector('.selector-test .first-child'):", firstChildParagraph.textContent);
+                firstChildParagraph.style.border = '1px solid #f97316'; // Orange-500
+                firstChildParagraph.style.borderRadius = '0.25rem';
+                firstChildParagraph.style.padding = '0.25rem';
+            }
+
+            // 5. document.querySelectorAll()
+            // Returns a NodeList (static collection) of all elements that match the specified CSS selector.
+            // NodeList can be iterated with forEach().
+            const allSelectorTestParagraphs = document.querySelectorAll('.selector-test p');
+            console.log("querySelectorAll('.selector-test p'):", allSelectorTestParagraphs);
+            allSelectorTestParagraphs.forEach(p => {
+                p.style.backgroundColor = '#dbeafe'; // Blue-100
+            });
+
+            // Example of an inline event handler (for demonstration, generally avoid)
+            // Not used in this specific counter, but for completeness of explanation
+            // const inlineButton = document.createElement('button');
+            // inlineButton.textContent = 'Inline Demo (Avoid)';
+            // inlineButton.onclick = function() { alert('This is an inline click!'); };
+            // document.querySelector('.container').appendChild(inlineButton);
+
+            // Example of DOM element property (for demonstration, less flexible than addEventListener)
+            // const propertyButton = document.createElement('button');
+            // propertyButton.textContent = 'Property Demo (Less Flexible)';
+            // propertyButton.style.marginTop = '1rem';
+            // propertyButton.onclick = function() { console.log('Clicked via property!'); };
+            // document.querySelector('.container').appendChild(propertyButton);
+        });
+    </script>
+</body>
+</html>

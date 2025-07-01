@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Specific Preceding Rectangles</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+        .container {
+            border: 1px solid #dcdcdc;
+            padding: 15px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .rectangle {
+            width: 150px;
+            height: 50px;
+            border: 2px solid #555;
+            margin-bottom: 10px;
+            background-color: #add8e6; /* Light blue initial color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            transition: background-color 0.5s ease-in-out;
+            border-radius: 5px;
+        }
+        .info-text {
+            font-style: italic;
+            color: #777;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Changing Specific Preceding Elements (Rectangles)</h1>
+    <p>This example demonstrates how to target and change only the two "rectangle" elements that appear directly before a clicked button, without affecting the parent container.</p>
+
+    <div class="container">
+        <h2>Targeting Siblings: The `previousElementSibling` Method</h2>
+        <div class="rectangle" id="rect1">Rectangle 1</div>
+        <div class="rectangle" id="rect2">Rectangle 2</div>
+        <button onclick="changePrecedingRectangles(this)">Change Rectangles Above Me</button>
+        <p class="info-text">Clicking this button will change the color of "Rectangle 1" and "Rectangle 2" directly above it.</p>
+    </div>
+
+    <div class="container">
+        <h2>Another Example: More Elements in Between</h2>
+        <div class="rectangle" id="rectA">Rectangle A</div>
+        <p>Some text in between.</p>
+        <span>Another element.</span>
+        <div class="rectangle" id="rectB">Rectangle B</div>
+        <button onclick="changePrecedingRectangles(this)">Change Rectangles Above Me</button>
+        <p class="info-text">Even with other elements in between, `previousElementSibling` can be used repeatedly to find the specific types of elements.</p>
+    </div>
+
+    <script>
+        // Function to generate a random hex color
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        /**
+         * Changes the background color of the two 'rectangle' elements
+         * directly preceding the clicked button.
+         * @param {HTMLElement} buttonElement The button that was clicked.
+         */
+        function changePrecedingRectangles(buttonElement) {
+            let currentElement = buttonElement.previousElementSibling;
+            let rectanglesChanged = 0; // Counter for how many rectangles we've changed
+            const maxRectanglesToChange = 2; // How many preceding rectangles to target
+
+            // Loop backward through siblings until we find enough rectangles or run out of siblings
+            while (currentElement && rectanglesChanged < maxRectanglesToChange) {
+                // Check if the current element is a div and has the 'rectangle' class
+                if (currentElement.tagName === 'DIV' && currentElement.classList.contains('rectangle')) {
+                    currentElement.style.backgroundColor = getRandomColor();
+                    console.log(`Changed color of: ${currentElement.id || currentElement.textContent.trim()}`);
+                    rectanglesChanged++;
+                }
+                // Move to the next previous sibling
+                currentElement = currentElement.previousElementSibling;
+            }
+
+            if (rectanglesChanged === 0) {
+                console.log("No preceding 'rectangle' elements found to change.");
+            } else if (rectanglesChanged < maxRectanglesToChange) {
+                console.log(`Only found ${rectanglesChanged} out of ${maxRectanglesToChange} preceding rectangles.`);
+            }
+        }
+    </script>
+
+</body>
+</html>

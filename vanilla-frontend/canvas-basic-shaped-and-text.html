@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Basic Shapes and Text</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f4f8; /* Light background */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .canvas-container {
+            background-color: #ffffff; /* White background for the container */
+            border: 1px solid #e2e8f0; /* Light border */
+            border-radius: 0.5rem; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            background-color: #f8fafc; /* Very light blue-gray for canvas background */
+            border: 1px dashed #cbd5e1; /* Dashed border for canvas */
+            border-radius: 0.375rem; /* Slightly rounded corners for canvas */
+            display: block; /* Remove extra space below canvas */
+            width: 600px; /* Fixed width for demonstration */
+            height: 400px; /* Fixed height for demonstration */
+        }
+        h1 {
+            color: #2d3748; /* Dark gray for heading */
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        p {
+            color: #4a5568; /* Medium gray for text */
+            margin-top: 1rem;
+            text-align: center;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-container">
+        <h1>Canvas Basic Shapes and Text</h1>
+        <canvas id="myCanvas" width="600" height="400"></canvas>
+        <p>This canvas demonstrates drawing rectangles, circles, lines, and text using JavaScript's 2D rendering context.</p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const canvas = document.getElementById('myCanvas');
+
+            // Check if the canvas element exists
+            if (!canvas) {
+                console.error("Canvas element not found!");
+                return;
+            }
+
+            // Get the 2D rendering context
+            const ctx = canvas.getContext('2d');
+
+            // Check if the 2D context is supported
+            if (!ctx) {
+                console.error("2D canvas context not supported!");
+                return;
+            }
+
+            // --- Drawing Rectangles ---
+
+            // 1. Filled Rectangle
+            ctx.fillStyle = '#FF5733'; // Set fill color to a vibrant orange-red
+            // fillRect(x, y, width, height)
+            ctx.fillRect(50, 50, 100, 75); // Draws a filled rectangle
+
+            // 2. Stroked (Outline) Rectangle
+            ctx.strokeStyle = '#3366FF'; // Set stroke color to a bright blue
+            ctx.lineWidth = 4; // Set line thickness
+            // strokeRect(x, y, width, height)
+            ctx.strokeRect(180, 50, 100, 75); // Draws an outlined rectangle
+
+            // --- Drawing Circles (and Arcs) ---
+
+            // Circles are drawn using the arc() method, which draws a circular arc.
+            // For a full circle, the start angle is 0 and the end angle is 2 * Math.PI (360 degrees).
+
+            // 1. Filled Circle
+            ctx.beginPath(); // Start a new path
+            ctx.fillStyle = '#28A745'; // Set fill color to green
+            // arc(x, y, radius, startAngle, endAngle, counterClockwise)
+            ctx.arc(100, 200, 40, 0, 2 * Math.PI); // Draw a full circle
+            ctx.fill(); // Fill the current path
+
+            // 2. Stroked (Outline) Circle
+            ctx.beginPath(); // Start a new path for the next shape
+            ctx.strokeStyle = '#DC3545'; // Set stroke color to red
+            ctx.lineWidth = 3; // Set line thickness
+            ctx.arc(250, 200, 40, 0, 2 * Math.PI); // Draw another full circle
+            ctx.stroke(); // Stroke the current path
+
+            // --- Drawing Lines ---
+
+            // Lines are drawn by defining a path using beginPath(), moveTo(), lineTo(), and then stroking it.
+
+            // 1. Simple Line
+            ctx.beginPath(); // Start a new path
+            ctx.strokeStyle = '#6F42C1'; // Set stroke color to purple
+            ctx.lineWidth = 5; // Set line thickness
+            ctx.moveTo(350, 50); // Move to the starting point (without drawing)
+            ctx.lineTo(550, 50); // Draw a line to this point
+            ctx.stroke(); // Render the path
+
+            // 2. Multiple Connected Lines (a path)
+            ctx.beginPath(); // Start a new path
+            ctx.strokeStyle = '#17A2B8'; // Set stroke color to teal
+            ctx.lineWidth = 2;
+            ctx.moveTo(350, 100); // Start point
+            ctx.lineTo(400, 150); // First segment
+            ctx.lineTo(350, 200); // Second segment
+            ctx.lineTo(400, 250); // Third segment
+            ctx.stroke(); // Render the path
+
+            // 3. Triangle (closed path)
+            ctx.beginPath();
+            ctx.fillStyle = '#FFC107'; // Yellow fill
+            ctx.strokeStyle = '#007BFF'; // Blue outline
+            ctx.lineWidth = 3;
+            ctx.moveTo(450, 100); // Top point
+            ctx.lineTo(500, 200); // Bottom-right point
+            ctx.lineTo(400, 200); // Bottom-left point
+            ctx.closePath(); // Closes the path by drawing a line back to the start point
+            ctx.fill(); // Fill the triangle
+            ctx.stroke(); // Stroke the outline
+
+            // --- Drawing Text ---
+
+            // Example 1: Basic filled text
+            ctx.font = '30px Arial'; // Set font size and family
+            ctx.fillStyle = '#000000'; // Black color
+            ctx.textAlign = 'left'; // Default horizontal alignment
+            ctx.textBaseline = 'alphabetic'; // Default vertical alignment
+            ctx.fillText('Hello Canvas!', 50, 300); // Draw text
+
+            // Example 2: Centered, stroked text with different font
+            ctx.font = 'italic 40px "Times New Roman"';
+            ctx.strokeStyle = '#8B0000'; // Dark red outline
+            ctx.lineWidth = 1;
+            ctx.textAlign = 'center'; // Center horizontally
+            ctx.textBaseline = 'middle'; // Align vertically to the middle
+            // Draw a small circle at the text's (x,y) to visualize alignment
+            ctx.beginPath();
+            ctx.arc(300, 300, 3, 0, 2 * Math.PI);
+            ctx.fillStyle = 'red';
+            ctx.fill();
+            ctx.strokeText('Centered Text', 300, 300); // Draw text at (300, 300)
+
+            // Example 3: Text with different baseline and right alignment
+            ctx.font = '25px Verdana';
+            ctx.fillStyle = '#4B0082'; // Indigo color
+            ctx.textAlign = 'right'; // Right align
+            ctx.textBaseline = 'top'; // Align to the top of the text bounding box
+            ctx.fillText('Top Right Text', 550, 350); // Draw text
+
+            // Example 4: Text with maxWidth
+            ctx.font = '20px sans-serif';
+            ctx.fillStyle = '#006400'; // Dark green
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'bottom';
+            ctx.fillText('This is a very long text that should be condensed if max width is applied.', 50, 380, 200); // Max width of 200px
+        };
+    </script>
+</body>
+</html>
