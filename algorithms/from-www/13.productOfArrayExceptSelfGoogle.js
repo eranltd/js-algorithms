@@ -41,35 +41,33 @@ The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit int
  * @return {number[]}
  */
 const productExceptSelf = function (nums) {
-  const finalArray  = []
-  //one subproblem, product of array till i-1
+  const finalArray = []
+  // one subproblem, product of array till i-1
   const left = []
   let multiplyLeft = 1
-  for(let i=0; i< nums.length;i++){
+  for (let i = 0; i < nums.length; i++) {
     left[i] = multiplyLeft
-    multiplyLeft = nums[i]*multiplyLeft
+    multiplyLeft = nums[i] * multiplyLeft
   }
 
-
-  //two subproblem, product of array till i+1
+  // two subproblem, product of array till i+1
 
   const right = []
   let multiplyRight = 1
-  for(let i = nums.length-1; i >= 0;i--){
+  for (let i = nums.length - 1; i >= 0; i--) {
     right[i] = multiplyRight
     multiplyRight = nums[i] * multiplyRight
   }
 
-  //final result, multiply both, can be reduce this part and multiply with left[i] on previous step
-  for(let i = 0; i<right.length;i++){
+  // final result, multiply both, can be reduce this part and multiply with left[i] on previous step
+  for (let i = 0; i < right.length; i++) {
     finalArray[i] = left[i] * right[i]
   }
 
-  console.log('left',left)
-  console.log('right',right)
+  console.log('left', left)
+  console.log('right', right)
 
   return finalArray
-
 }
 
 /* https://dev.to/akhilpokle/product-of-array-except-self-a-mind-boggling-google-interview-question-1en1 */
@@ -77,7 +75,6 @@ const productExceptSelf = function (nums) {
 console.log(productExceptSelf([1, 2, 3, 4])) // [24,12,8,6]
 // console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0,0,9,0,0]
 // console.log(productExceptSelf([1, 2, 3, 4, 5])) // [120,60,40,30,24]
-
 
 /** Why it works? */
 /*

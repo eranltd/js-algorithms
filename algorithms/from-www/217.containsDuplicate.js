@@ -29,8 +29,6 @@ Input: nums = [1,1,1,3,3,4,3,2,4,2]
 
 Output: true
 
- 
-
 Constraints:
 
 1 <= nums.length <= 105
@@ -41,19 +39,19 @@ Constraints:
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
-    // const shown = {}
-    // for(let i=0;i<nums.length; i++){
-    //     if(shown[nums[i]])
-    //         return true
+const containsDuplicate = function (nums) {
+  // const shown = {}
+  // for(let i=0;i<nums.length; i++){
+  //     if(shown[nums[i]])
+  //         return true
 
-    //     shown[nums[i]] = true
-    // }
+  //     shown[nums[i]] = true
+  // }
 
-    // return false
-    
-    const s = new Set(nums); return s.size !== nums.length //Set does not allows repetition so the size != length
-};
+  // return false
 
-console.log(containsDuplicate([1,2,3,4])) //false
-console.log(containsDuplicate([1,1,1,3,3,4,3,2,4,2])) //true
+  const s = new Set(nums); return s.size !== nums.length // Set does not allows repetition so the size != length
+}
+
+console.log(containsDuplicate([1, 2, 3, 4])) // false
+console.log(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2])) // true
