@@ -36,7 +36,7 @@ Idea
 - So for this question, we have the grid, so we don't have to build one. The difference is that when we traverse the maze, we won't be able to stop unless we hit a wall.
 - So in a traditional grid, when we do BFS we can get the next-level cells by moving up/down/left/right. In this question, as long as we can find the next-level cells by "rolling until we hit a wall", then it's the same question.
 - That's easy, we can just have a helper function that walks from [x,y] following the direction's delta [dx,dy], then we'll find the next-level cells.
-- The code is astoundingly simiar to the previous questions, so it should explain itself well.
+- The code is astoundingly similar to the previous questions, so it should explain itself well.
 
 %#****#%*****@#*****#%*****@#*****#%*****%%*****##*****%@*****%#*****%@*****%%*****%%*****%%*****%-
 @=----+#-----@%=----=#-----@%-----=*-----%@-----+*-----%@-----**-----%@-----#*-----%@=----#*-----@=.
