@@ -31,21 +31,31 @@ s consists of English letters, digits, symbols and spaces.
  * @return {number}
  */
 const lengthOfLongestSubstring = function (s) {
+  // If the string is empty or has one character, the longest substring is the string itself.
   if (s.length <= 1) return s.length
 
+  // 'seen' stores the last index where we saw each character.
   const seen = {}
-  let left = 0; let longest = 0
+  // 'left' is the starting index of our current window.
+  let left = 0
+  // 'longest' stores the maximum length found so far.
+  let longest = 0
 
+  // 'right' is the ending index of our current window. We expand the window by moving it.
   for (let right = 0; right < s.length; right++) {
     const currentChar = s[right]
     const previouslySeenChar = seen[currentChar]
 
-    if (previouslySeenChar >= left) {
+    // If we have seen the currentChar before AND its last position is inside our current window...
+    if (previouslySeenChar >= left) { //The if (previouslySeenChar >= left) check is the most brilliant part. It ensures we only slide the window if the character we've seen before is part of our current window.
+      // ...then we must "slide" the window's start to be right after that last position.
       left = previouslySeenChar + 1
     }
 
+    // Update the last seen position of the current character.
     seen[currentChar] = right
 
+    // Check if the current window's length is the new longest.
     longest = Math.max(longest, right - left + 1)
   }
 
