@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Image App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="controls">
+        <button id="undoBtn" disabled>Undo</button>
+        <button id="redoBtn" disabled>Redo</button>
+        <div id="font-size-control">
+            <label for="fontSizeInput">Font Size:</label>
+            <input type="number" id="fontSizeInput" value="16" min="8" max="48">
+        </div>
+    </div>
+
+    <div id="canvasContainer">
+        <canvas id="myCanvas" width="800" height="600"></canvas>
+    </div>
+
+    <table id="rectanglesTable">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>X</th>
+                <th>Y</th>
+                <th>Width</th>
+                <th>Height</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
