@@ -40,7 +40,8 @@ Constraints:
  * @return {boolean}
  */
 const containsDuplicate = function (nums) {
-  // const shown = {}
+  //method 1: use memory
+    // const shown = {}
   // for(let i=0;i<nums.length; i++){
   //     if(shown[nums[i]])
   //         return true
@@ -50,7 +51,10 @@ const containsDuplicate = function (nums) {
 
   // return false
 
-  const s = new Set(nums); return s.size !== nums.length // Set does not allows repetition so the size != length
+  //method 2 : use Set (removes duplication)
+  const s = new Set(nums)
+  
+  return s.size !== nums.length // Set does not allows repetition so the size != length
 }
 
 console.log(containsDuplicate([1, 2, 3, 4])) // false
