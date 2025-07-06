@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="4479pt" height="170pt" viewBox="0.00 0.00 4478.98 170.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 166)">
+<title>ClientToClientFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-166 4474.98,-166 4474.98,4 -4,4"/>
+<g id="clust1" class="cluster">
+<title>cluster_client_a</title>
+<polygon fill="#e3f2fd" stroke="black" points="8,-45 8,-126 289.36,-126 289.36,-45 8,-45"/>
+<text text-anchor="middle" x="148.68" y="-111.2" font-family="Arial" font-size="12.00">Client A</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_google_cloud</title>
+<polygon fill="#f5f5f5" stroke="black" points="443.28,-8 443.28,-154 3956.22,-154 3956.22,-8 443.28,-8"/>
+<text text-anchor="middle" x="2199.75" y="-139.2" font-family="Arial" font-size="12.00">Google Cloud Infrastructure (The 'In-Between')</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_processing</title>
+<polygon fill="#f5f5f5" stroke="black" points="983.69,-16 983.69,-124 2989.49,-124 2989.49,-16 983.69,-16"/>
+<text text-anchor="middle" x="1986.59" y="-109.2" font-family="Arial" font-size="12.00">Backend Processing</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_broadcast</title>
+<polygon fill="#f5f5f5" stroke="black" points="3169.56,-47 3169.56,-123 3948.22,-123 3948.22,-47 3169.56,-47"/>
+<text text-anchor="middle" x="3558.89" y="-108.2" font-family="Arial" font-size="12.00">Broadcast System</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_client_b</title>
+<polygon fill="#e8f5e9" stroke="black" points="4173.85,-45 4173.85,-126 4462.98,-126 4462.98,-45 4173.85,-45"/>
+<text text-anchor="middle" x="4318.42" y="-111.2" font-family="Arial" font-size="12.00">Client B</text>
+</g>
+<!-- client_a -->
+<g id="node1" class="node">
+<title>client_a</title>
+<path fill="white" stroke="black" d="M28,-53.2C28,-53.2 269.36,-53.2 269.36,-53.2 275.36,-53.2 281.36,-59.2 281.36,-65.2 281.36,-65.2 281.36,-82.8 281.36,-82.8 281.36,-88.8 275.36,-94.8 269.36,-94.8 269.36,-94.8 28,-94.8 28,-94.8 22,-94.8 16,-88.8 16,-82.8 16,-82.8 16,-65.2 16,-65.2 16,-59.2 22,-53.2 28,-53.2"/>
+<text text-anchor="middle" x="49.67" y="-69.8" font-family="Arial" font-size="14.00">Browser</text>
+<polyline fill="none" stroke="black" points="83.34,-53.2 83.34,-94.8"/>
+<text text-anchor="middle" x="182.35" y="-78.2" font-family="Arial" font-size="14.00">1. User edits cell C5.</text>
+<text text-anchor="middle" x="182.35" y="-61.4" font-family="Arial" font-size="14.00">Generates 'operation' packet.</text>
+</g>
+<!-- edge_network -->
+<g id="node2" class="node">
+<title>edge_network</title>
+<path fill="white" stroke="black" d="M463.28,-53.2C463.28,-53.2 766.95,-53.2 766.95,-53.2 772.95,-53.2 778.95,-59.2 778.95,-65.2 778.95,-65.2 778.95,-82.8 778.95,-82.8 778.95,-88.8 772.95,-94.8 766.95,-94.8 766.95,-94.8 463.28,-94.8 463.28,-94.8 457.28,-94.8 451.28,-88.8 451.28,-82.8 451.28,-82.8 451.28,-65.2 451.28,-65.2 451.28,-59.2 457.28,-53.2 463.28,-53.2"/>
+<text text-anchor="middle" x="503.24" y="-69.8" font-family="Arial" font-size="14.00">Network Edge</text>
+<polyline fill="none" stroke="black" points="555.21,-53.2 555.21,-94.8"/>
+<text text-anchor="middle" x="667.08" y="-78.2" font-family="Arial" font-size="14.00">Anycast DNS</text>
+<text text-anchor="middle" x="667.08" y="-61.4" font-family="Arial" font-size="14.00">Google Cloud Armor (TLS/DDoS)</text>
+</g>
+<!-- client_a&#45;&gt;edge_network -->
+<g id="edge1" class="edge">
+<title>client_a-&gt;edge_network</title>
+<path fill="none" stroke="black" d="M281.84,-74C330.92,-74 387.39,-74 439.68,-74"/>
+<polygon fill="black" stroke="black" points="439.6,-77.5 449.6,-74 439.6,-70.5 439.6,-77.5"/>
+<text text-anchor="middle" x="366.32" y="-77" font-family="Arial" font-size="10.00">2. HTTPS Request</text>
+</g>
+<!-- lb -->
+<g id="node3" class="node">
+<title>lb</title>
+<path fill="white" stroke="black" d="M1003.69,-51.2C1003.69,-51.2 1108.53,-51.2 1108.53,-51.2 1114.53,-51.2 1120.53,-57.2 1120.53,-63.2 1120.53,-63.2 1120.53,-80.8 1120.53,-80.8 1120.53,-86.8 1114.53,-92.8 1108.53,-92.8 1108.53,-92.8 1003.69,-92.8 1003.69,-92.8 997.69,-92.8 991.69,-86.8 991.69,-80.8 991.69,-80.8 991.69,-63.2 991.69,-63.2 991.69,-57.2 997.69,-51.2 1003.69,-51.2"/>
+<text text-anchor="middle" x="1056.11" y="-76.2" font-family="Arial" font-size="14.00">Global &amp; Regional</text>
+<text text-anchor="middle" x="1056.11" y="-59.4" font-family="Arial" font-size="14.00">Load Balancers</text>
+</g>
+<!-- edge_network&#45;&gt;lb -->
+<g id="edge2" class="edge">
+<title>edge_network-&gt;lb</title>
+<path fill="none" stroke="black" d="M779.27,-73.26C848.15,-72.94 924.96,-72.59 980.01,-72.34"/>
+<polygon fill="black" stroke="black" points="979.91,-75.84 989.9,-72.3 979.88,-68.84 979.91,-75.84"/>
+<text text-anchor="middle" x="885.32" y="-76.06" font-family="Arial" font-size="10.00">3. Route to Backend Service</text>
+</g>
+<!-- app_server -->
+<g id="node4" class="node">
+<title>app_server</title>
+<path fill="white" stroke="black" d="M1330.25,-57C1330.25,-57 1574.02,-57 1574.02,-57 1580.02,-57 1586.02,-63 1586.02,-69 1586.02,-69 1586.02,-81 1586.02,-81 1586.02,-87 1580.02,-93 1574.02,-93 1574.02,-93 1330.25,-93 1330.25,-93 1324.25,-93 1318.25,-87 1318.25,-81 1318.25,-81 1318.25,-69 1318.25,-69 1318.25,-63 1324.25,-57 1330.25,-57"/>
+<text text-anchor="middle" x="1383.05" y="-70.9" font-family="Arial" font-size="14.00">Application Server</text>
+<polyline fill="none" stroke="black" points="1447.86,-57.2 1447.86,-93"/>
+<text text-anchor="middle" x="1516.94" y="-70.9" font-family="Arial" font-size="14.00">Auth &amp; Permissions</text>
+</g>
+<!-- lb&#45;&gt;app_server -->
+<g id="edge3" class="edge">
+<title>lb-&gt;app_server</title>
+<path fill="none" stroke="black" d="M1120.85,-72.49C1170.99,-72.87 1242.8,-73.41 1306.66,-73.9"/>
+<polygon fill="black" stroke="black" points="1306.53,-77.4 1316.56,-73.98 1306.59,-70.4 1306.53,-77.4"/>
+<text text-anchor="middle" x="1219.39" y="-76.59" font-family="Arial" font-size="10.00">4. Forward to App Server</text>
+</g>
+<!-- ot_engine -->
+<g id="node5" class="node">
+<title>ot_engine</title>
+<path fill="white" stroke="black" d="M1777.95,-57C1777.95,-57 2153.23,-57 2153.23,-57 2159.23,-57 2165.23,-63 2165.23,-69 2165.23,-69 2165.23,-81 2165.23,-81 2165.23,-87 2159.23,-93 2153.23,-93 2153.23,-93 1777.95,-93 1777.95,-93 1771.95,-93 1765.95,-87 1765.95,-81 1765.95,-81 1765.95,-69 1765.95,-69 1765.95,-63 1771.95,-57 1777.95,-57"/>
+<text text-anchor="middle" x="1899.23" y="-70.9" font-family="Arial" font-size="14.00">Operational Transformation (OT) Engine</text>
+<polyline fill="none" stroke="black" points="2032.5,-57.2 2032.5,-93"/>
+<text text-anchor="middle" x="2098.87" y="-70.9" font-family="Arial" font-size="14.00">Conflict Resolution</text>
+</g>
+<!-- app_server&#45;&gt;ot_engine -->
+<g id="edge4" class="edge">
+<title>app_server-&gt;ot_engine</title>
+<path fill="none" stroke="black" d="M1586.51,-75C1637.84,-75 1697.78,-75 1754.61,-75"/>
+<polygon fill="black" stroke="black" points="1754.42,-78.5 1764.42,-75 1754.42,-71.5 1754.42,-78.5"/>
+<text text-anchor="middle" x="1675.99" y="-78" font-family="Arial" font-size="10.00">5. Process Operation</text>
+</g>
+<!-- logic_engine -->
+<g id="node6" class="node">
+<title>logic_engine</title>
+<path fill="white" stroke="black" d="M2264.23,-57C2264.23,-57 2465.22,-57 2465.22,-57 2471.22,-57 2477.22,-63 2477.22,-69 2477.22,-69 2477.22,-81 2477.22,-81 2477.22,-87 2471.22,-93 2465.22,-93 2465.22,-93 2264.23,-93 2264.23,-93 2258.23,-93 2252.23,-87 2252.23,-81 2252.23,-81 2252.23,-69 2252.23,-69 2252.23,-63 2258.23,-57 2264.23,-57"/>
+<text text-anchor="middle" x="2307.31" y="-70.9" font-family="Arial" font-size="14.00">Business Logic</text>
+<polyline fill="none" stroke="black" points="2362.39,-57.2 2362.39,-93"/>
+<text text-anchor="middle" x="2419.81" y="-70.9" font-family="Arial" font-size="14.00">Formula Engine</text>
+</g>
+<!-- ot_engine&#45;&gt;logic_engine -->
+<g id="edge5" class="edge">
+<title>ot_engine-&gt;logic_engine</title>
+<path fill="none" stroke="black" d="M2165.45,-75C2191.12,-75 2216.78,-75 2240.73,-75"/>
+<polygon fill="black" stroke="black" points="2240.45,-78.5 2250.45,-75 2240.45,-71.5 2240.45,-78.5"/>
+</g>
+<!-- db -->
+<g id="node7" class="node">
+<title>db</title>
+<path fill="white" stroke="black" d="M2981.49,-88.4C2981.49,-91.27 2910.29,-93.6 2822.65,-93.6 2735,-93.6 2663.81,-91.27 2663.81,-88.4 2663.81,-88.4 2663.81,-41.6 2663.81,-41.6 2663.81,-38.73 2735,-36.4 2822.65,-36.4 2910.29,-36.4 2981.49,-38.73 2981.49,-41.6 2981.49,-41.6 2981.49,-88.4 2981.49,-88.4"/>
+<path fill="none" stroke="black" d="M2981.49,-88.4C2981.49,-85.53 2910.29,-83.2 2822.65,-83.2 2735,-83.2 2663.81,-85.53 2663.81,-88.4"/>
+<text text-anchor="middle" x="2822.65" y="-69.2" font-family="Arial" font-size="14.00">{Database (Google Spanner) | ACID Transaction</text>
+<text text-anchor="middle" x="2822.65" y="-52.4" font-family="Arial" font-size="14.00">Persist State &amp; Revision}</text>
+</g>
+<!-- logic_engine&#45;&gt;db -->
+<g id="edge6" class="edge">
+<title>logic_engine-&gt;db</title>
+<path fill="none" stroke="black" d="M2477.55,-72.55C2530.18,-71.39 2594.08,-69.99 2652.46,-68.71"/>
+<polygon fill="black" stroke="black" points="2652.24,-72.22 2662.17,-68.5 2652.09,-65.22 2652.24,-72.22"/>
+<text text-anchor="middle" x="2570.51" y="-74.48" font-family="Arial" font-size="10.00">6. Commit Transaction</text>
+</g>
+<!-- pubsub -->
+<g id="node8" class="node">
+<title>pubsub</title>
+<path fill="white" stroke="black" d="M3189.56,-56C3189.56,-56 3496.39,-56 3496.39,-56 3502.39,-56 3508.39,-62 3508.39,-68 3508.39,-68 3508.39,-80 3508.39,-80 3508.39,-86 3502.39,-92 3496.39,-92 3496.39,-92 3189.56,-92 3189.56,-92 3183.56,-92 3177.56,-86 3177.56,-80 3177.56,-80 3177.56,-68 3177.56,-68 3177.56,-62 3183.56,-56 3189.56,-56"/>
+<text text-anchor="middle" x="3257.17" y="-69.9" font-family="Arial" font-size="14.00">Google Cloud Pub/Sub</text>
+<polyline fill="none" stroke="black" points="3336.78,-56.2 3336.78,-92"/>
+<text text-anchor="middle" x="3422.58" y="-69.9" font-family="Arial" font-size="14.00">Document-Specific Topic</text>
+</g>
+<!-- db&#45;&gt;pubsub -->
+<g id="edge7" class="edge">
+<title>db-&gt;pubsub</title>
+<path fill="none" stroke="black" d="M2981.98,-67.75C3040.16,-68.76 3106.36,-69.91 3166,-70.94"/>
+<polygon fill="black" stroke="black" points="3165.87,-74.44 3175.93,-71.12 3165.99,-67.44 3165.87,-74.44"/>
+<text text-anchor="middle" x="3079.53" y="-73.31" font-family="Arial" font-size="10.00">7. Publish Change Event</text>
+</g>
+<!-- push_engine -->
+<g id="node9" class="node">
+<title>push_engine</title>
+<path fill="white" stroke="black" d="M3607.39,-56C3607.39,-56 3928.22,-56 3928.22,-56 3934.22,-56 3940.22,-62 3940.22,-68 3940.22,-68 3940.22,-80 3940.22,-80 3940.22,-86 3934.22,-92 3928.22,-92 3928.22,-92 3607.39,-92 3607.39,-92 3601.39,-92 3595.39,-86 3595.39,-80 3595.39,-80 3595.39,-68 3595.39,-68 3595.39,-62 3601.39,-56 3607.39,-56"/>
+<text text-anchor="middle" x="3659.41" y="-69.9" font-family="Arial" font-size="14.00">Real-Time Engine</text>
+<polyline fill="none" stroke="black" points="3723.44,-56.2 3723.44,-92"/>
+<text text-anchor="middle" x="3831.83" y="-69.9" font-family="Arial" font-size="14.00">Manages persistent connections</text>
+</g>
+<!-- pubsub&#45;&gt;push_engine -->
+<g id="edge8" class="edge">
+<title>pubsub-&gt;push_engine</title>
+<path fill="none" stroke="black" d="M3508.66,-74C3533.2,-74 3558.61,-74 3583.5,-74"/>
+<polygon fill="black" stroke="black" points="3583.38,-77.5 3593.38,-74 3583.38,-70.5 3583.38,-77.5"/>
+</g>
+<!-- client_b -->
+<g id="node10" class="node">
+<title>client_b</title>
+<path fill="white" stroke="black" d="M4193.85,-53.2C4193.85,-53.2 4442.98,-53.2 4442.98,-53.2 4448.98,-53.2 4454.98,-59.2 4454.98,-65.2 4454.98,-65.2 4454.98,-82.8 4454.98,-82.8 4454.98,-88.8 4448.98,-94.8 4442.98,-94.8 4442.98,-94.8 4193.85,-94.8 4193.85,-94.8 4187.85,-94.8 4181.85,-88.8 4181.85,-82.8 4181.85,-82.8 4181.85,-65.2 4181.85,-65.2 4181.85,-59.2 4187.85,-53.2 4193.85,-53.2"/>
+<text text-anchor="middle" x="4215.52" y="-69.8" font-family="Arial" font-size="14.00">Browser</text>
+<polyline fill="none" stroke="black" points="4249.2,-53.2 4249.2,-94.8"/>
+<text text-anchor="middle" x="4352.09" y="-78.2" font-family="Arial" font-size="14.00">9. Receives 'operation' packet.</text>
+<text text-anchor="middle" x="4352.09" y="-61.4" font-family="Arial" font-size="14.00">Patches local UI.</text>
+</g>
+<!-- push_engine&#45;&gt;client_b -->
+<g id="edge9" class="edge">
+<title>push_engine-&gt;client_b</title>
+<path fill="none" stroke="black" d="M3940.51,-74C4014.2,-74 4099.44,-74 4170.2,-74"/>
+<polygon fill="black" stroke="black" points="4169.91,-77.5 4179.91,-74 4169.91,-70.5 4169.91,-77.5"/>
+<text text-anchor="middle" x="4061.04" y="-77" font-family="Arial" font-size="10.00">8. Push Notification via WebSocket</text>
+</g>
+</g>
+</svg>
