@@ -1,0 +1,90 @@
+digraph EcommerceArchitecture {
+    // General graph settings
+    compound=true;
+    rankdir="LR";
+    fontname="Arial";
+    fontsize=12;
+    splines=true;
+
+    // Node and edge default settings
+    node [shape=record, style="rounded,filled", fontname="Arial", fillcolor="white"];
+    edge [fontname="Arial", fontsize=10];
+
+    // --- Main Clusters ---
+    subgraph cluster_frontend {
+        label="Frontend (Hosted on Vercel)";
+        style="filled";
+        fillcolor="#E3F2FD";
+        node [style="rounded,filled", fillcolor="white"];
+
+        cart [label="{Cart | Next.JS + React\nVercel (Edge)}"];
+        purchase_ui [label="Purchase | trial"];
+        bff [label="Back for front"];
+
+        cart -> bff;
+        purchase_ui -> bff;
+    }
+
+    subgraph cluster_backend {
+        label="UCL Microservices";
+        style="filled";
+        fillcolor="#E8F5E9";
+        node [style="rounded,filled", fillcolor="white"];
+
+        billing_gates [label="Billing Gates"];
+        user_directory [label="User Directory"];
+        cron_runner [label="CronJobRunner"];
+    }
+
+    subgraph cluster_devops_services {
+        label="DevOps Section";
+        style="filled";
+        fillcolor="#FFF9C4";
+        node [style="rounded,filled", fillcolor="white"];
+
+        api_gateway [label="API Gateway |\nLoad Balancer", shape=component];
+        big1 [label="BIG"];
+        big2 [label="BIG"];
+        big3 [label="BIG"];
+
+        api_gateway -> {big1, big2, big3};
+    }
+
+    subgraph cluster_db {
+        label="Data Persistence";
+        style="filled";
+        fillcolor="#FFEBEE";
+        db [label="{DB (devops, chester) | <f0> order | <f1> subscription}", shape=Mrecord];
+    }
+
+    // --- External Services & Other Components ---
+    node [shape=box, style="rounded,filled", fillcolor="#F5F5F5"];
+    stripe [label="Stripe"];
+    coralogix [label="Coralogix"];
+    sentry [label="Sentry.js"];
+    mixpanel [label="MixPanel"];
+    endpoint_protection [label="Endpoint Protection"];
+    marketing_funnel [label="Marketing Funnel, QUIZZ"];
+    main_app [label="Main Application"];
+    main_funnel_desc [label="Main Funnel\n1. user + biz, credit card -> paymentToken\n2. create new user (confirm)\n3. APM-> billing gates -> charge paypal, stripe, braintree\n4. register userdirectory (confirm)\n5. redirect to the product.", shape=note];
+
+
+    // --- Define Connections ---
+    endpoint_protection -> cart;
+    marketing_funnel -> cart;
+    main_app -> cart;
+
+    bff -> billing_gates [label="purchase component -> stripe"];
+    billing_gates -> user_directory;
+    billing_gates -> stripe;
+
+    user_directory -> db;
+
+    // Monitoring and Logging
+    cart -> sentry;
+    cart -> mixpanel;
+    cluster_backend -> coralogix [ltail=cluster_backend, lhead=coralogix, label="logs"];
+
+    // DevOps connections
+    cluster_devops_services -> cluster_backend [ltail=cluster_devops_services, lhead=cluster_backend, label="exponentialBackoff"];
+}
