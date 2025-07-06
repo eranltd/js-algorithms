@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1478pt" height="499pt" viewBox="0.00 0.00 1477.58 499.40">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 495.4)">
+<title>WorkizAutomationFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-495.4 1473.58,-495.4 1473.58,4 -4,4"/>
+<text text-anchor="middle" x="734.79" y="-476.6" font-family="Arial" font-size="12.00">Workiz Automation - Microservice Interaction Flow</text>
+<g id="clust1" class="cluster">
+<title>cluster_app</title>
+<path fill="#f0f4f8" stroke="#f0f4f8" d="M20,-86C20,-86 263.05,-86 263.05,-86 269.05,-86 275.05,-92 275.05,-98 275.05,-98 275.05,-284 275.05,-284 275.05,-290 269.05,-296 263.05,-296 263.05,-296 20,-296 20,-296 14,-296 8,-290 8,-284 8,-284 8,-98 8,-98 8,-92 14,-86 20,-86"/>
+<text text-anchor="middle" x="141.52" y="-281.2" font-family="Arial" font-size="12.00">Main Application</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_queue</title>
+<path fill="#f0f4f8" stroke="#f0f4f8" d="M447,-236C447,-236 595.82,-236 595.82,-236 601.82,-236 607.82,-242 607.82,-248 607.82,-248 607.82,-304 607.82,-304 607.82,-310 601.82,-316 595.82,-316 595.82,-316 447,-316 447,-316 441,-316 435,-310 435,-304 435,-304 435,-248 435,-248 435,-242 441,-236 447,-236"/>
+<text text-anchor="middle" x="521.41" y="-301.2" font-family="Arial" font-size="12.00">Messaging</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_service1</title>
+<path fill="#f0f4f8" stroke="#f0f4f8" d="M1062.85,-103C1062.85,-103 1426.62,-103 1426.62,-103 1432.62,-103 1438.62,-109 1438.62,-115 1438.62,-115 1438.62,-187 1438.62,-187 1438.62,-193 1432.62,-199 1426.62,-199 1426.62,-199 1062.85,-199 1062.85,-199 1056.85,-199 1050.85,-193 1050.85,-187 1050.85,-187 1050.85,-115 1050.85,-115 1050.85,-109 1056.85,-103 1062.85,-103"/>
+<text text-anchor="middle" x="1244.73" y="-184.2" font-family="Arial" font-size="12.00">Microservice 1: Rules Service</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_service2</title>
+<path fill="#f0f4f8" stroke="#f0f4f8" d="M748.32,-227C748.32,-227 1151.37,-227 1151.37,-227 1157.37,-227 1163.37,-233 1163.37,-239 1163.37,-239 1163.37,-328 1163.37,-328 1163.37,-334 1157.37,-340 1151.37,-340 1151.37,-340 748.32,-340 748.32,-340 742.32,-340 736.32,-334 736.32,-328 736.32,-328 736.32,-239 736.32,-239 736.32,-233 742.32,-227 748.32,-227"/>
+<text text-anchor="middle" x="949.85" y="-325.2" font-family="Arial" font-size="12.00">Microservice 2: Trigger Service</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_service3</title>
+<path fill="#f0f4f8" stroke="#f0f4f8" d="M1046.12,-348C1046.12,-348 1449.58,-348 1449.58,-348 1455.58,-348 1461.58,-354 1461.58,-360 1461.58,-360 1461.58,-449 1461.58,-449 1461.58,-455 1455.58,-461 1449.58,-461 1449.58,-461 1046.12,-461 1046.12,-461 1040.12,-461 1034.12,-455 1034.12,-449 1034.12,-449 1034.12,-360 1034.12,-360 1034.12,-354 1040.12,-348 1046.12,-348"/>
+<text text-anchor="middle" x="1247.85" y="-446.2" font-family="Arial" font-size="12.00">Microservice 3: Notification Service</text>
+</g>
+<!-- db -->
+<g id="node1" class="node">
+<title>db</title>
+<path fill="#fff9c4" stroke="black" d="M168.52,-32.73C168.52,-34.53 156.42,-36 141.52,-36 126.62,-36 114.52,-34.53 114.52,-32.73 114.52,-32.73 114.52,-3.27 114.52,-3.27 114.52,-1.47 126.62,0 141.52,0 156.42,0 168.52,-1.47 168.52,-3.27 168.52,-3.27 168.52,-32.73 168.52,-32.73"/>
+<path fill="none" stroke="black" d="M168.52,-32.73C168.52,-30.92 156.42,-29.45 141.52,-29.45 126.62,-29.45 114.52,-30.92 114.52,-32.73"/>
+<text text-anchor="middle" x="141.52" y="-13.8" font-family="Arial" font-size="14.00">db</text>
+</g>
+<!-- workiz_app -->
+<g id="node2" class="node">
+<title>workiz_app</title>
+<polygon fill="#b3e5fc" stroke="black" points="196.21,-265.8 86.84,-265.8 86.84,-261.8 82.84,-261.8 82.84,-257.8 86.84,-257.8 86.84,-232.2 82.84,-232.2 82.84,-228.2 86.84,-228.2 86.84,-224.2 196.21,-224.2 196.21,-265.8"/>
+<polyline fill="none" stroke="black" points="86.84,-261.8 90.84,-261.8 90.84,-257.8 86.84,-257.8"/>
+<polyline fill="none" stroke="black" points="86.84,-232.2 90.84,-232.2 90.84,-228.2 86.84,-228.2"/>
+<text text-anchor="middle" x="141.52" y="-249.2" font-family="Arial" font-size="14.00">Workiz App</text>
+<text text-anchor="middle" x="141.52" y="-232.4" font-family="Arial" font-size="14.00">(Event Source)</text>
+</g>
+<!-- queue -->
+<g id="node4" class="node">
+<title>queue</title>
+<polygon fill="#e1bee7" stroke="black" stroke-dasharray="5,2" points="599.82,-285.8 443,-285.8 443,-244.2 599.82,-244.2 599.82,-285.8"/>
+<text text-anchor="middle" x="521.41" y="-269.2" font-family="Arial" font-size="14.00">Pub/Sub Queue</text>
+<text text-anchor="middle" x="521.41" y="-252.4" font-family="Arial" font-size="14.00">(e.g., RabbitMQ, SQS)</text>
+</g>
+<!-- workiz_app&#45;&gt;queue -->
+<g id="edge2" class="edge">
+<title>workiz_app-&gt;queue</title>
+<path fill="none" stroke="black" d="M196.36,-255C196.36,-255 431.31,-255 431.31,-255"/>
+<polygon fill="black" stroke="black" points="431.31,-258.5 441.31,-255 431.31,-251.5 431.31,-258.5"/>
+<text text-anchor="middle" x="355.02" y="-273" font-family="Times,serif" font-size="14.00">1. Publishes Event</text>
+<text text-anchor="middle" x="355.02" y="-256.2" font-family="Times,serif" font-size="14.00">(e.g., job.status.changed)</text>
+</g>
+<!-- management_ui -->
+<g id="node3" class="node">
+<title>management_ui</title>
+<path fill="#d1c4e9" stroke="black" d="M255.28,-143.59C255.28,-143.59 153.29,-164 153.29,-164 147.41,-165.18 135.64,-165.18 129.76,-164 129.76,-164 27.77,-143.59 27.77,-143.59 21.88,-142.41 16.02,-135.24 16.03,-129.24 16.03,-129.24 16.08,-112.58 16.08,-112.58 16.1,-106.58 22.12,-100.58 28.12,-100.58 28.12,-100.58 254.93,-100.58 254.93,-100.58 260.93,-100.58 266.95,-106.58 266.96,-112.58 266.96,-112.58 267.01,-129.24 267.01,-129.24 267.03,-135.24 261.16,-142.41 255.28,-143.59"/>
+<text text-anchor="middle" x="141.52" y="-134.2" font-family="Arial" font-size="14.00">Management UI</text>
+<text text-anchor="middle" x="141.52" y="-117.4" font-family="Arial" font-size="14.00">(Automation Builder)</text>
+</g>
+<!-- rules_service -->
+<g id="node5" class="node">
+<title>rules_service</title>
+<path fill="#c8e6c9" stroke="black" d="M1149.21,-160.8C1149.21,-160.8 1070.85,-160.8 1070.85,-160.8 1064.85,-160.8 1058.85,-154.8 1058.85,-148.8 1058.85,-148.8 1058.85,-131.2 1058.85,-131.2 1058.85,-125.2 1064.85,-119.2 1070.85,-119.2 1070.85,-119.2 1149.21,-119.2 1149.21,-119.2 1155.21,-119.2 1161.21,-125.2 1161.21,-131.2 1161.21,-131.2 1161.21,-148.8 1161.21,-148.8 1161.21,-154.8 1155.21,-160.8 1149.21,-160.8"/>
+<text text-anchor="middle" x="1110.03" y="-144.2" font-family="Arial" font-size="14.00">Rules Service</text>
+<text text-anchor="middle" x="1110.03" y="-127.4" font-family="Arial" font-size="14.00">(Rule Engine)</text>
+</g>
+<!-- management_ui&#45;&gt;rules_service -->
+<g id="edge1" class="edge">
+<title>management_ui-&gt;rules_service</title>
+<path fill="none" stroke="black" d="M267.15,-133.07C267.15,-133.07 1046.95,-133.07 1046.95,-133.07"/>
+<polygon fill="black" stroke="black" points="1046.95,-136.57 1056.95,-133.07 1046.95,-129.57 1046.95,-136.57"/>
+<text text-anchor="middle" x="672.07" y="-141" font-family="Times,serif" font-size="14.00">CRUD Operations</text>
+<text text-anchor="middle" x="672.07" y="-124.2" font-family="Times,serif" font-size="14.00">(add, edit, delete)</text>
+</g>
+<!-- trigger_service -->
+<g id="node7" class="node">
+<title>trigger_service</title>
+<path fill="#c8e6c9" stroke="black" d="M843.23,-292.8C843.23,-292.8 756.32,-292.8 756.32,-292.8 750.32,-292.8 744.32,-286.8 744.32,-280.8 744.32,-280.8 744.32,-263.2 744.32,-263.2 744.32,-257.2 750.32,-251.2 756.32,-251.2 756.32,-251.2 843.23,-251.2 843.23,-251.2 849.23,-251.2 855.23,-257.2 855.23,-263.2 855.23,-263.2 855.23,-280.8 855.23,-280.8 855.23,-286.8 849.23,-292.8 843.23,-292.8"/>
+<text text-anchor="middle" x="799.78" y="-276.2" font-family="Arial" font-size="14.00">Trigger Service</text>
+<text text-anchor="middle" x="799.78" y="-259.4" font-family="Arial" font-size="14.00">(Scheduler)</text>
+</g>
+<!-- queue&#45;&gt;trigger_service -->
+<g id="edge3" class="edge">
+<title>queue-&gt;trigger_service</title>
+<path fill="none" stroke="black" d="M600.07,-268.5C600.07,-268.5 732.32,-268.5 732.32,-268.5"/>
+<polygon fill="black" stroke="black" points="732.32,-272 742.32,-268.5 732.32,-265 732.32,-272"/>
+<text text-anchor="middle" x="672.07" y="-272.2" font-family="Times,serif" font-size="14.00">2. Consumes Event</text>
+</g>
+<!-- rules_db -->
+<g id="node6" class="node">
+<title>rules_db</title>
+<path fill="#fff9c4" stroke="black" d="M1430.62,-163.4C1430.62,-166.27 1410.99,-168.6 1386.83,-168.6 1362.67,-168.6 1343.04,-166.27 1343.04,-163.4 1343.04,-163.4 1343.04,-116.6 1343.04,-116.6 1343.04,-113.73 1362.67,-111.4 1386.83,-111.4 1410.99,-111.4 1430.62,-113.73 1430.62,-116.6 1430.62,-116.6 1430.62,-163.4 1430.62,-163.4"/>
+<path fill="none" stroke="black" d="M1430.62,-163.4C1430.62,-160.53 1410.99,-158.2 1386.83,-158.2 1362.67,-158.2 1343.04,-160.53 1343.04,-163.4"/>
+<text text-anchor="middle" x="1386.83" y="-144.2" font-family="Arial" font-size="14.00">Rules DB</text>
+<text text-anchor="middle" x="1386.83" y="-127.4" font-family="Arial" font-size="14.00">(MongoDB)</text>
+</g>
+<!-- rules_service&#45;&gt;rules_db -->
+<g id="edge6" class="edge">
+<title>rules_service-&gt;rules_db</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1172.96,-140C1172.96,-140 1331.47,-140 1331.47,-140"/>
+<polygon fill="black" stroke="black" points="1172.96,-136.5 1162.96,-140 1172.96,-143.5 1172.96,-136.5"/>
+<polygon fill="black" stroke="black" points="1331.47,-143.5 1341.47,-140 1331.47,-136.5 1331.47,-143.5"/>
+</g>
+<!-- trigger_service&#45;&gt;rules_service -->
+<g id="edge5" class="edge">
+<title>trigger_service-&gt;rules_service</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M799.78,-250.78C799.78,-215.1 799.78,-146.93 799.78,-146.93 799.78,-146.93 1046.94,-146.93 1046.94,-146.93"/>
+<polygon fill="black" stroke="black" points="1046.94,-150.43 1056.94,-146.93 1046.94,-143.43 1046.94,-150.43"/>
+<text text-anchor="middle" x="948.68" y="-217.2" font-family="Times,serif" font-size="14.00">4. Fetches Rule Details</text>
+</g>
+<!-- trigger_db -->
+<g id="node8" class="node">
+<title>trigger_db</title>
+<path fill="#fff9c4" stroke="black" d="M1155.37,-304.4C1155.37,-307.27 1135.05,-309.6 1110.03,-309.6 1085.01,-309.6 1064.69,-307.27 1064.69,-304.4 1064.69,-304.4 1064.69,-257.6 1064.69,-257.6 1064.69,-254.73 1085.01,-252.4 1110.03,-252.4 1135.05,-252.4 1155.37,-254.73 1155.37,-257.6 1155.37,-257.6 1155.37,-304.4 1155.37,-304.4"/>
+<path fill="none" stroke="black" d="M1155.37,-304.4C1155.37,-301.53 1135.05,-299.2 1110.03,-299.2 1085.01,-299.2 1064.69,-301.53 1064.69,-304.4"/>
+<text text-anchor="middle" x="1110.03" y="-285.2" font-family="Arial" font-size="14.00">Triggers DB</text>
+<text text-anchor="middle" x="1110.03" y="-268.4" font-family="Arial" font-size="14.00">(MongoDB)</text>
+</g>
+<!-- trigger_service&#45;&gt;trigger_db -->
+<g id="edge4" class="edge">
+<title>trigger_service-&gt;trigger_db</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M867.12,-265.87C867.12,-265.87 1052.73,-265.87 1052.73,-265.87"/>
+<polygon fill="black" stroke="black" points="867.12,-262.37 857.12,-265.87 867.12,-269.37 867.12,-262.37"/>
+<polygon fill="black" stroke="black" points="1052.73,-269.37 1062.73,-265.87 1052.73,-262.37 1052.73,-269.37"/>
+<text text-anchor="middle" x="948.68" y="-297.2" font-family="Times,serif" font-size="14.00">3. Creates Pending Trigger</text>
+</g>
+<!-- notification_service -->
+<g id="node9" class="node">
+<title>notification_service</title>
+<path fill="#c8e6c9" stroke="black" d="M1165.94,-419.8C1165.94,-419.8 1054.12,-419.8 1054.12,-419.8 1048.12,-419.8 1042.12,-413.8 1042.12,-407.8 1042.12,-407.8 1042.12,-390.2 1042.12,-390.2 1042.12,-384.2 1048.12,-378.2 1054.12,-378.2 1054.12,-378.2 1165.94,-378.2 1165.94,-378.2 1171.94,-378.2 1177.94,-384.2 1177.94,-390.2 1177.94,-390.2 1177.94,-407.8 1177.94,-407.8 1177.94,-413.8 1171.94,-419.8 1165.94,-419.8"/>
+<text text-anchor="middle" x="1110.03" y="-403.2" font-family="Arial" font-size="14.00">Notification Service</text>
+<text text-anchor="middle" x="1110.03" y="-386.4" font-family="Arial" font-size="14.00">(Stateless Worker)</text>
+</g>
+<!-- trigger_service&#45;&gt;notification_service -->
+<g id="edge7" class="edge">
+<title>trigger_service-&gt;notification_service</title>
+<path fill="none" stroke="black" d="M855.73,-279.33C929.62,-279.33 1050.48,-279.33 1050.48,-279.33 1050.48,-279.33 1050.48,-366.37 1050.48,-366.37"/>
+<polygon fill="black" stroke="black" points="1046.98,-366.37 1050.48,-376.37 1053.98,-366.37 1046.98,-366.37"/>
+<text text-anchor="middle" x="948.68" y="-407" font-family="Times,serif" font-size="14.00">5. Sends Action Command</text>
+<text text-anchor="middle" x="948.68" y="-390.2" font-family="Times,serif" font-size="14.00">(after delay &amp; validation)</text>
+</g>
+<!-- external_actions -->
+<g id="node10" class="node">
+<title>external_actions</title>
+<path fill="#ffccbc" stroke="black" d="M1441.58,-430.8C1441.58,-430.8 1332.08,-430.8 1332.08,-430.8 1326.08,-430.8 1320.08,-424.8 1320.08,-418.8 1320.08,-418.8 1320.08,-401.2 1320.08,-401.2 1320.08,-395.2 1326.08,-389.2 1332.08,-389.2 1332.08,-389.2 1441.58,-389.2 1441.58,-389.2 1447.58,-389.2 1453.58,-395.2 1453.58,-401.2 1453.58,-401.2 1453.58,-418.8 1453.58,-418.8 1453.58,-424.8 1447.58,-430.8 1441.58,-430.8"/>
+<text text-anchor="middle" x="1386.83" y="-414.2" font-family="Arial" font-size="14.00">External Gateways</text>
+<text text-anchor="middle" x="1386.83" y="-397.4" font-family="Arial" font-size="14.00">(SMS, Email)</text>
+</g>
+<!-- notification_service&#45;&gt;external_actions -->
+<g id="edge8" class="edge">
+<title>notification_service-&gt;external_actions</title>
+<path fill="none" stroke="black" d="M1178.1,-404.5C1178.1,-404.5 1308.47,-404.5 1308.47,-404.5"/>
+<polygon fill="black" stroke="black" points="1308.47,-408 1318.47,-404.5 1308.47,-401 1308.47,-408"/>
+<text text-anchor="middle" x="1249.01" y="-418.2" font-family="Times,serif" font-size="14.00">6. Executes Action</text>
+</g>
+</g>
+</svg>
