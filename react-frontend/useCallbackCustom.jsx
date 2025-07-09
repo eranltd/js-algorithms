@@ -1,67 +1,43 @@
-import { useRef, useEffect, DependencyList } from 'react';
+// This simulates a "module scope" where state would persist between "renders"
+let lastArgs = null;
+let lastCallback = null;
 
-/**
- * A custom implementation of the useCallback hook.
- *
- * @template T The type of the callback function.
- * @param {T} callback The callback function to memoize.
- * @param {DependencyList} dependencies An array of dependencies.
- * @returns {T} The memoized callback function.
- */
-export const useCustomCallback = <T extends (...args: any[]) => any>(
-  callback: T,
-  dependencies: DependencyList
-): T => {
-  // Use a ref to store the callback function.
-  const callbackRef = useRef<T>(callback);
-
-  // Update the stored callback whenever the original callback changes.
-  useEffect(() => {
-    callbackRef.current = callback;
-  }, [callback]);
-
-  // Use a ref to store the memoized callback.
-  const memoizedCallbackRef = useRef<T>(((...args: any[]) => {
-    return callbackRef.current(...args);
-  }) as T);
-
-  // Use a ref to store the previous dependencies.
-  const prevDependenciesRef = useRef<DependencyList>(dependencies);
-
-  // Compare current dependencies with previous dependencies.
-  const haveDependenciesChanged = dependencies.some(
-    (dep, i) => dep !== prevDependenciesRef.current[i]
-  );
-
-  // If dependencies have changed, create a new memoized callback.
-  if (haveDependenciesChanged) {
-    memoizedCallbackRef.current = ((...args: any[]) => {
-      return callbackRef.current(...args);
-    }) as T;
-    prevDependenciesRef.current = dependencies;
+function myUseCallback(callback, dependencies) {
+  // Check if dependencies have changed
+  let dependenciesChanged = false;
+  if (lastArgs === null || lastArgs.length !== dependencies.length) {
+    dependenciesChanged = true;
+  } else {
+    for (let i = 0; i < dependencies.length; i++) {
+      if (lastArgs[i] !== dependencies[i]) {
+        dependenciesChanged = true;
+        break;
+      }
+    }
   }
 
-  return memoizedCallbackRef.current;
-};
+  // If dependencies changed, create a new callback and store it
+  if (dependenciesChanged) {
+    lastArgs = dependencies;
+    lastCallback = callback;
+  }
 
+  // Always return the stored callback
+  return lastCallback;
+}
 
 /*
+How It Works 💡
 
-How It Works 🤔
+lastArgs and lastCallback: These variables act as our "memory." They store the dependencies and the memoized callback function from the previous "render." In a real React hook, this state is managed internally by React for each component.
 
-callbackRef: A useRef hook holds the most recent version of the callback function. This is important because we need to be able to call the latest callback from within our memoized function, without causing the memoized function itself to be recreated.
+Dependency Check: The code first checks if this is the first render (lastArgs === null) or if the number of dependencies has changed. If not, it loops through the dependencies to see if any of them have a different value than what's stored in lastArgs.
 
-useEffect to Update callbackRef: This useEffect hook runs whenever the callback prop changes. It updates callbackRef.current to the new callback. This ensures that our memoized function will always call the latest version of the callback passed to the hook.
+Memoization:
 
-memoizedCallbackRef: This ref holds the function that we will return. By storing it in a ref, we ensure that the same function reference is returned on every render unless the dependencies change.
+If the dependencies have changed, it updates lastArgs and lastCallback with the new values.
 
-Dependency Comparison:
+If the dependencies are the same, it does nothing and simply returns the lastCallback that was already stored.
 
-prevDependenciesRef stores the dependencies from the previous render.
-
-The haveDependenciesChanged variable checks if any of the current dependencies are different from the prevDependenciesRef.
-
-If a dependency has changed, we create a new function and update memoizedCallbackRef.current and prevDependenciesRef.current.
-
-Return Value: The hook returns the function stored in memoizedCallbackRef.current. This will be the same function reference across re-renders until a dependency changes.
+This simplified version illustrates the fundamental principle of useCallback without the complexity of the actual React hook lifecycle.
 */
