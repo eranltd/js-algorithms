@@ -1,4 +1,4 @@
-digraph WorkizAutomationFlow {
+digraph crmAutomationFlow {
     // Graph attributes
     rankdir=LR;
     splines=ortho;
@@ -6,7 +6,7 @@ digraph WorkizAutomationFlow {
     fontname="Arial";
     fontsize=12;
     labelloc="t";
-    label="Workiz Automation - Microservice Interaction Flow";
+    label="crm Automation - Microservice Interaction Flow";
 
     // Node styles
     node [shape=box, style="rounded,filled", fontname="Arial"];
@@ -18,7 +18,7 @@ digraph WorkizAutomationFlow {
         label="Main Application";
         style="filled,rounded";
         color="#F0F4F8";
-        workiz_app [label="Workiz App\n(Event Source)", shape=component, fillcolor="#B3E5FC"];
+        crm_app [label="crm App\n(Event Source)", shape=component, fillcolor="#B3E5FC"];
         management_ui [label="Management UI\n(Automation Builder)", shape=house, fillcolor="#D1C4E9"];
     }
 
@@ -60,7 +60,7 @@ digraph WorkizAutomationFlow {
     management_ui -> rules_service [label="CRUD Operations\n(add, edit, delete)"];
     
     // Event & Automation Flow
-    workiz_app -> queue [label="1. Publishes Event\n(e.g., job.status.changed)"];
+    crm_app -> queue [label="1. Publishes Event\n(e.g., job.status.changed)"];
     queue -> trigger_service [label="2. Consumes Event"];
     trigger_service -> trigger_db [label="3. Creates Pending Trigger", dir=both, style=dashed];
     trigger_service -> rules_service [label="4. Fetches Rule Details", style=dashed];

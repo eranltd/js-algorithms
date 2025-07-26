@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1478pt" height="499pt" viewBox="0.00 0.00 1477.58 499.40">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 495.4)">
-<title>WorkizAutomationFlow</title>
+<title>AutomationFlow</title>
 <polygon fill="white" stroke="none" points="-4,4 -4,-495.4 1473.58,-495.4 1473.58,4 -4,4"/>
-<text text-anchor="middle" x="734.79" y="-476.6" font-family="Arial" font-size="12.00">Workiz Automation - Microservice Interaction Flow</text>
+<text text-anchor="middle" x="734.79" y="-476.6" font-family="Arial" font-size="12.00"> Automation - Microservice Interaction Flow</text>
 <g id="clust1" class="cluster">
 <title>cluster_app</title>
 <path fill="#f0f4f8" stroke="#f0f4f8" d="M20,-86C20,-86 263.05,-86 263.05,-86 269.05,-86 275.05,-92 275.05,-98 275.05,-98 275.05,-284 275.05,-284 275.05,-290 269.05,-296 263.05,-296 263.05,-296 20,-296 20,-296 14,-296 8,-290 8,-284 8,-284 8,-98 8,-98 8,-92 14,-86 20,-86"/>
@@ -35,13 +35,13 @@
 <path fill="none" stroke="black" d="M168.52,-32.73C168.52,-30.92 156.42,-29.45 141.52,-29.45 126.62,-29.45 114.52,-30.92 114.52,-32.73"/>
 <text text-anchor="middle" x="141.52" y="-13.8" font-family="Arial" font-size="14.00">db</text>
 </g>
-<!-- workiz_app -->
+<!-- crm_app -->
 <g id="node2" class="node">
-<title>workiz_app</title>
+<title>crm_app</title>
 <polygon fill="#b3e5fc" stroke="black" points="196.21,-265.8 86.84,-265.8 86.84,-261.8 82.84,-261.8 82.84,-257.8 86.84,-257.8 86.84,-232.2 82.84,-232.2 82.84,-228.2 86.84,-228.2 86.84,-224.2 196.21,-224.2 196.21,-265.8"/>
 <polyline fill="none" stroke="black" points="86.84,-261.8 90.84,-261.8 90.84,-257.8 86.84,-257.8"/>
 <polyline fill="none" stroke="black" points="86.84,-232.2 90.84,-232.2 90.84,-228.2 86.84,-228.2"/>
-<text text-anchor="middle" x="141.52" y="-249.2" font-family="Arial" font-size="14.00">Workiz App</text>
+<text text-anchor="middle" x="141.52" y="-249.2" font-family="Arial" font-size="14.00">CRM App</text>
 <text text-anchor="middle" x="141.52" y="-232.4" font-family="Arial" font-size="14.00">(Event Source)</text>
 </g>
 <!-- queue -->
@@ -51,9 +51,9 @@
 <text text-anchor="middle" x="521.41" y="-269.2" font-family="Arial" font-size="14.00">Pub/Sub Queue</text>
 <text text-anchor="middle" x="521.41" y="-252.4" font-family="Arial" font-size="14.00">(e.g., RabbitMQ, SQS)</text>
 </g>
-<!-- workiz_app&#45;&gt;queue -->
+<!-- crm_app&#45;&gt;queue -->
 <g id="edge2" class="edge">
-<title>workiz_app-&gt;queue</title>
+<title>crm_app-&gt;queue</title>
 <path fill="none" stroke="black" d="M196.36,-255C196.36,-255 431.31,-255 431.31,-255"/>
 <polygon fill="black" stroke="black" points="431.31,-258.5 441.31,-255 431.31,-251.5 431.31,-258.5"/>
 <text text-anchor="middle" x="355.02" y="-273" font-family="Times,serif" font-size="14.00">1. Publishes Event</text>

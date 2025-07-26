@@ -1,18 +1,18 @@
-# Workiz Automation Engine
+# CRM Automation Engine
 
-This document outlines the architecture, data models, and workflow for the Workiz Automation Engine. The system is designed as a set of decoupled microservices to handle the creation, scheduling, and execution of complex automation rules based on events within the main Workiz application. Its core purpose is to provide a flexible, scalable, and reliable automation platform.
+This document outlines the architecture, data models, and workflow for the CRM Automation Engine. The system is designed as a set of decoupled microservices to handle the creation, scheduling, and execution of complex automation rules based on events within the main CRM application. Its core purpose is to provide a flexible, scalable, and reliable automation platform.
 
 ## System Architecture
 
 The following diagram illustrates the flow of information between the main application and the various microservices that comprise the automation engine. The architecture is designed to be event-driven, ensuring loose coupling and high availability.
 
-1. **Workiz Automation Architecture**:  
+1. **CRM Automation Architecture**:  
 	![Architecture](./architecture.svg)
 
 
 
 ```dot
-digraph WorkizAutomationFlow {
+digraph CRMAutomationFlow {
     // Graph attributes
     rankdir=LR;
     splines=ortho;
@@ -20,7 +20,7 @@ digraph WorkizAutomationFlow {
     fontname="Arial";
     fontsize=12;
     labelloc="t";
-    label="Workiz Automation - Microservice Interaction Flow";
+    label="CRM Automation - Microservice Interaction Flow";
 
     // Node styles
     node [shape=box, style="rounded,filled", fontname="Arial"];
@@ -32,7 +32,7 @@ digraph WorkizAutomationFlow {
         label="Main Application";
         style="filled,rounded";
         color="#F0F4F8";
-        workiz_app [label="Workiz App\n(Event Source)", shape=component, fillcolor="#B3E5FC"];
+        CRM_app [label="CRM App\n(Event Source)", shape=component, fillcolor="#B3E5FC"];
         management_ui [label="Management UI\n(Automation Builder)", shape=house, fillcolor="#D1C4E9"];
     }
 
@@ -74,7 +74,7 @@ digraph WorkizAutomationFlow {
     management_ui -> rules_service [label="CRUD Operations via REST API\n(add, edit, delete)"];
     
     // Event & Automation Flow
-    workiz_app -> queue [label="1. Publishes Event\n(e.g., job.status.changed)"];
+    CRM_app -> queue [label="1. Publishes Event\n(e.g., job.status.changed)"];
     queue -> trigger_service [label="2. Consumes Event"];
     trigger_service -> trigger_db [label="3. Creates Pending Trigger", dir=both, style=dashed];
     trigger_service -> rules_service [label="4. Fetches Rule Details", style=dashed];
@@ -152,7 +152,7 @@ This rule triggers immediately when a high-value job is created, sending both an
     {
       "type": "email",
       "params": {
-        "recipient": "manager@workiz.com",
+        "recipient": "manager@CRM.com",
         "subject": "New High-Value Job: #{{job.number}}",
         "templateId": "new-high-value-job-template"
       }
@@ -162,7 +162,7 @@ This rule triggers immediately when a high-value job is created, sending both an
       "params": {
         "url": "[https://hooks.crm.com/new-lead](https://hooks.crm.com/new-lead)",
         "payload": {
-          "source": "Workiz Automation",
+          "source": "CRM Automation",
           "jobId": "{{job.id}}",
           "clientName": "{{job.client.name}}",
           "value": "{{job.total}}"
